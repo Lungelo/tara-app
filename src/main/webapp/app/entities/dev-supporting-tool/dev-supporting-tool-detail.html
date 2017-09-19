@@ -1,0 +1,266 @@
+
+<div>
+    <h2><span>Supporting Tool</span> {{vm.devSupportingTool.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.name}}</span>
+        </dd>
+        <dt><span>Model</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.model}}</span>
+        </dd>
+        <dt><span>Technology Type</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.technologyType}}</span>
+        </dd>
+        <dt><span>Trl</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.trl}}</span>
+        </dd>
+        <dt><span>Photo</span></dt>
+        <dd>
+            <div ng-if="vm.devSupportingTool.photo">
+                <a ng-click="vm.openFile(vm.devSupportingTool.photoContentType, vm.devSupportingTool.photo)">
+                    <img data-ng-src="{{'data:' + vm.devSupportingTool.photoContentType + ';base64,' + vm.devSupportingTool.photo}}" style="max-width: 100%;" alt="devSupportingTool image"/>
+                </a>
+            </div>
+        </dd>
+        <dt><span>Datasheet</span></dt>
+        <dd>
+            <div ng-if="vm.devSupportingTool.datasheet">
+                <a ng-click="vm.openFile(vm.devSupportingTool.datasheetContentType, vm.devSupportingTool.datasheet)">View/Download</a>
+                
+            </div>
+        </dd>
+        <dt><span>Type Of Machine</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.typeOfMachine}}</span>
+        </dd>
+        <dt><span>Tested Type Of Machine</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedTypeOfMachine}}</span>
+        </dd>
+        <dt><span>Weight</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.weight}}kg</span>
+        </dd>
+        <dt><span>Tested Weight</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedWeight}}</span>
+        </dd>
+        <dt><span>Length</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.length}}mm</span>
+        </dd>
+        <dt><span>Tested Length</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedLength}}</span>
+        </dd>
+        <dt><span>Width</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.width}}mm</span>
+        </dd>
+        <dt><span>Tested Width</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedWidth}}</span>
+        </dd>
+        <dt><span>Power Rating Percussion</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.powerRatingPercussion}}kW</span>
+        </dd>
+        <dt><span>Tested Power Rating Percussion</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedPowerRatingPercussion}}</span>
+        </dd>
+        <dt><span>Noise Level At Operator Stand</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.noiseLevelAtOperatorStand}}dBA</span>
+        </dd>
+        <dt><span>Tested Noise Level At Operator Stand</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedNoiseLevelAtOperatorStand}}</span>
+        </dd>
+        <dt><span>Hole Size Range</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.holeSizeRange}}mm</span>
+        </dd>
+        <dt><span>Tested Hole Size Range</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedHoleSizeRange}}</span>
+        </dd>
+        <dt><span>Drill Water Consumption</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.drillWaterConsumption}}i/s</span>
+        </dd>
+        <dt><span>Tested Drill Water Consumption</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedDrillWaterConsumption}}</span>
+        </dd>
+        <dt><span>Water Consumption Per Metre Drilled</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.waterConsumptionPerMetreDrilled}}l/m</span>
+        </dd>
+        <dt><span>Tested Water Consumption Per Metre Drilled</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedWaterConsumptionPerMetreDrilled}}</span>
+        </dd>
+        <dt><span>Power Source</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.powerSource}}</span>
+        </dd>
+        <dt><span>Tested Power Source</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedPowerSource}}</span>
+        </dd>
+        <dt><span>Tramming Speed</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.trammingSpeed}}Km/hr</span>
+        </dd>
+        <dt><span>Tested Tramming Speed</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedTrammingSpeed}}</span>
+        </dd>
+        <dt><span>Bolt Length Range</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.boltLengthRange}}mm</span>
+        </dd>
+        <dt><span>Tested Bolt Length Range</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedBoltLengthRange}}</span>
+        </dd>
+        <dt><span>Minimum Operating Height</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.minimumOperatingHeight}}mm</span>
+        </dd>
+        <dt><span>Tested Minimum Operating Height</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedMinimumOperatingHeight}}</span>
+        </dd>
+        <dt><span>Drill Speed</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.drillSpeed}} min</span>
+        </dd>
+        <dt><span>Tested Drill Speed</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedDrillSpeed}}</span>
+        </dd>
+        <dt><span>Gradeability</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.gradeability}}Degrees</span>
+        </dd>
+        <dt><span>Tested Gradeability</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedGradeability}}</span>
+        </dd>
+        <dt><span>Number Of Booms</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.numberOfBooms}}</span>
+        </dd>
+        <dt><span>Tested Number Of Booms</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedNumberOfBooms}}</span>
+        </dd>
+        <dt><span>Type Of Boom</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.typeOfBoom}}</span>
+        </dd>
+        <dt><span>Tested Type Of Boom</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedTypeOfBoom}}</span>
+        </dd>
+        <dt><span>Outer Turning Radius</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.outerTurningRadius}}mm</span>
+        </dd>
+        <dt><span>Tested Outer Turning Radius</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedOuterTurningRadius}}</span>
+        </dd>
+        <dt><span>Inner Turning Radius</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.nnerTurningRadius}}mm</span>
+        </dd>
+        <dt><span>Tested Inner Turning Radius</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedInnerTurningRadius}}</span>
+        </dd>
+        <dt><span>Observations 1</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.observations1}}</span>
+        </dd>
+        <dt><span>Tested Observations 1</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedObservations1}}</span>
+        </dd>
+        <dt><span>Observations 2</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.observations2}}</span>
+        </dd>
+        <dt><span>Tested Observations 2</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedObservations2}}</span>
+        </dd>
+        <dt><span>Observations 3</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.observations3}}</span>
+        </dd>
+        <dt><span>Tested Observations 3</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedObservations3}}</span>
+        </dd>
+        <dt><span>Observations 4</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.observations4}}</span>
+        </dd>
+        <dt><span>Tested Observations 4</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedObservations4}}</span>
+        </dd>
+        <dt><span>Observations 5</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.observations5}}</span>
+        </dd>
+        <dt><span>Tested Observations 5</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedObservations5}}</span>
+        </dd>
+        <dt><span>Observations 6</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.observations6}}</span>
+        </dd>
+        <dt><span>Tested Observations 6</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedObservations6}}</span>
+        </dd>
+        <dt><span>Operators Comments</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.operators_Comments}}</span>
+        </dd>
+        <dt><span>Tested Operators Comments</span></dt>
+        <dd>
+            <span>{{vm.devSupportingTool.testedOperators_Comments}}</span>
+        </dd>
+        <dt><span>Oem Name</span></dt>
+        <dd>
+            <a ui-sref="company-detail({id:vm.devSupportingTool.oemName.id})">{{vm.devSupportingTool.oemName.name}}</a>
+        </dd>
+        <dt><span>Added By</span></dt>
+        <dd>
+            {{vm.devSupportingTool.addedBy.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="dev-supporting-tool-detail.edit({id:vm.devSupportingTool.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

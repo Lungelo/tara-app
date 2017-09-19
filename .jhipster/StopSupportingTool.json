@@ -1,0 +1,435 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "oemName",
+            "otherEntityName": "company",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+            ],
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "addedBy",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+            ],
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "stopSupportingTool"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "3"
+        },
+		{
+            "fieldName": "model",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "3"
+        },
+        {
+            "fieldName": "technologyType",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "3"
+        },
+        {
+            "fieldName": "trl",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "1",
+            "fieldValidateRulesMax": "9"
+        },
+        {
+            "fieldName": "photo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "datasheet",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+		{
+            "fieldName": "typeOfMachine",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedTypeOfMachine",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                
+            ]
+        },
+        {
+            "fieldName": "weight",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedWeight",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+               
+            ]
+        },
+        {
+            "fieldName": "length",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedLength",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        },
+		{
+            "fieldName": "width",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedWidth",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        },
+		{
+            "fieldName": "holeSize",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedHoleSize",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        },
+		{
+            "fieldName": "drillWaterConsumption",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedDrillWaterConsumption",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        },
+		{
+            "fieldName": "cycleTimeBolting",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedCycleTimeBolting",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        },
+		{
+            "fieldName": "waterConsumptionPerMetreDrilled",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedWaterConsumptionPerMetreDrilled",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        },
+		
+        {
+            "fieldName": "powerSource",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedPowerSource",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                
+            ]
+        },
+		{
+            "fieldName": "trammingSpeed",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedTrammingSpeed",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        },
+		
+		{
+            "fieldName": "boltLengthRange",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "testedBoltLengthRange",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                
+            ]
+        },
+        {
+            "fieldName": "drillSpeed",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedDrillSpeed",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        },
+        {
+            "fieldName": "gradeability",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedGradeability",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        },
+        {
+            "fieldName": "numberOfBooms",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedNumberOfBooms",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        },
+		{
+            "fieldName": "typeOfBoom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedTypeOfBoom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                
+            ]
+        },
+        {
+            "fieldName": "outerTurningRadius",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedOuterTurningRadius",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        },
+		{
+            "fieldName": "innerTurningRadius",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+		,
+		{
+            "fieldName": "testedInnerTurningRadius",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        }
+		,{
+            "fieldName": "observations1",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			"required"
+			]
+        }
+		,
+		{
+            "fieldName": "testedObservations1",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			
+			]
+        }
+		,
+        {
+            "fieldName": "observations2",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			"required"
+			]
+        },
+		{
+            "fieldName": "testedObservations2",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			
+			]
+        },
+		{
+            "fieldName": "observations3",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			"required"
+			]
+        },
+		{
+            "fieldName": "testedObservations3",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			
+			]
+        },{
+            "fieldName": "observations4",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			"required"
+			]
+        },
+		{
+            "fieldName": "testedObservations4",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			
+			]
+        },{
+            "fieldName": "observations5",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			"required"
+			]
+        }
+        ,
+		{
+            "fieldName": "testedObservations5",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			
+			]
+        }
+        ,{
+            "fieldName": "observations6",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			"required"
+			]
+        }
+        ,
+		{
+            "fieldName": "testedObservations6",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			
+			]
+        }
+        ,{
+            "fieldName": "operators_Comments",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			"required"
+			]
+        }
+		,{
+            "fieldName": "testedOperators_Comments",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			
+			]
+        }
+
+    ],
+    "changelogDate": "20170720132454",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "stop_supporing_tool",
+    "pagination": "pagination"
+}

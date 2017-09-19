@@ -1,0 +1,293 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myGetWayLabel">Add or edit a GetWay</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group " ng-show="vm.getWay.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.getWay.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.getWay.name"
+                    required ng-minlength="3"/>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_technologyType">Technology Type</label>
+            <input type="text" class="form-control" name="technologyType" id="field_technologyType"
+                    ng-model="vm.getWay.technologyType"
+                    required ng-minlength="3"/>
+            <div ng-show="editForm.technologyType.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.technologyType.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.technologyType.$error.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_trl">TRL</label>
+            <input type="number" class="form-control" name="trl" id="field_trl"
+                    ng-model="vm.getWay.trl"
+                    required min="1" max="9"/>
+            <div ng-show="editForm.trl.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.trl.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.trl.$error.min" translate-value-min="1">
+                    This field should be at least 1.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.trl.$error.max">
+                    This field cannot be more than 9.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.trl.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setPhoto($file, vm.getWay)" ngf-pattern="'image/*'">
+            <label class="control-label" for="field_photo">Photo</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.getWay.photoContentType + ';base64,' + vm.getWay.photo}}" style="max-height: 100px;" ng-if="vm.getWay.photo" alt="getWay image"/>
+                <div ng-if="vm.getWay.photo" class="help-block clearfix">
+                    <span class="pull-left">{{vm.getWay.photoContentType}}, {{vm.byteSize(vm.getWay.photo)}}</span>
+                    <button type="button" ng-click="vm.getWay.photo=null;vm.getWay.photoContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setPhoto($file, vm.getWay)" accept="image/*">
+                                        <i class="glyphicon glyphicon-open"></i>  Browse
+
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="photo" id="field_photo"
+                    ng-model="vm.getWay.photo"
+                    />
+            <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
+                    ng-model="vm.getWay.photoContentType" />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setDatasheet($file, vm.getWay)">
+            <label class="control-label" for="field_datasheet">Datasheet</label>
+            <div>
+                <div ng-if="vm.getWay.datasheet" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.getWay.datasheetContentType, vm.getWay.datasheet)">open</a><br>
+                    <span class="pull-left">{{vm.getWay.datasheetContentType}}, {{vm.byteSize(vm.getWay.datasheet)}}</span>
+                    <button type="button" ng-click="vm.getWay.datasheet=null;vm.getWay.datasheetContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setDatasheet($file, vm.getWay)">
+                                        <i class="glyphicon glyphicon-open"></i>  Browse
+
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="datasheet" id="field_datasheet"
+                    ng-model="vm.getWay.datasheet"
+                    />
+            <input type="hidden" class="form-control" name="datasheetContentType" id="field_datasheetContentType"
+                    ng-model="vm.getWay.datasheetContentType" />
+        </div>
+         </br>
+        <div class="form-group  text-center">
+            <label style="padding: 6px 12px;
+    text-transform: uppercase;
+    border: 1px solid #003667;
+    color: #003667;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 0;
+    background-color: transparent;" >Specification</label>
+            
+        </div>
+        <hr></hr>
+        
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_compatibility">Compatibility</label>
+            <input type="text" class="form-control" name="compatibility" id="field_compatibility"
+                    ng-model="vm.getWay.compatibility"
+                    required/>
+            <div ng-show="editForm.compatibility.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.compatibility.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_upgradeability">Upgradeability</label>
+            <input type="text" class="form-control" name="upgradeability" id="field_upgradeability"
+                    ng-model="vm.getWay.upgradeability"
+                    required/>
+            <div ng-show="editForm.upgradeability.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.upgradeability.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_dustProof">Dust Proof</label>
+            <select class="form-control" name="dustProof" ng-model="vm.getWay.dustProof" id="field_dustProof" required>
+                <option value="YES">YES</option>
+                <option value="NO">NO</option>
+            </select>
+            <div ng-show="editForm.dustProof.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dustProof.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_waterOrCondensationProof">Water Or Condensation Proof</label>
+            <select class="form-control" name="waterOrCondensationProof" ng-model="vm.getWay.waterOrCondensationProof" id="field_waterOrCondensationProof" required>
+                <option value="YES">YES</option>
+                <option value="NO">NO</option>
+            </select>
+            <div ng-show="editForm.waterOrCondensationProof.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.waterOrCondensationProof.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_temperature">Temperature</label>
+            <input type="number" class="form-control" name="temperature" id="field_temperature"
+                    ng-model="vm.getWay.temperature"
+                    required/>
+            <div ng-show="editForm.temperature.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.temperature.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.temperature.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_easeOfInstallation">Ease Of Installation</label>
+            <input type="text" class="form-control" name="easeOfInstallation" id="field_easeOfInstallation"
+                    ng-model="vm.getWay.easeOfInstallation"
+                    required/>
+            <div ng-show="editForm.easeOfInstallation.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.easeOfInstallation.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_maintainability">Maintainability</label>
+            <input type="text" class="form-control" name="maintainability" id="field_maintainability"
+                    ng-model="vm.getWay.maintainability"
+                    required/>
+            <div ng-show="editForm.maintainability.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.maintainability.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_size">Size</label>
+            <input type="number" class="form-control" name="size" id="field_size"
+                    ng-model="vm.getWay.size"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_ram">Ram</label>
+            <input type="text" class="form-control" name="ram" id="field_ram"
+                    ng-model="vm.getWay.ram"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_storage">Storage</label>
+            <input type="text" class="form-control" name="storage" id="field_storage"
+                    ng-model="vm.getWay.storage"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_operatingTemperature">Operating Temperature</label>
+            <input type="number" class="form-control" name="operatingTemperature" id="field_operatingTemperature"
+                    ng-model="vm.getWay.operatingTemperature"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_power">Power</label>
+            <input type="text" class="form-control" name="power" id="field_power"
+                    ng-model="vm.getWay.power"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_relativeHumidity">Relative Humidity</label>
+            <input type="number" class="form-control" name="relativeHumidity" id="field_relativeHumidity"
+                    ng-model="vm.getWay.relativeHumidity"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_systemOnChip">System On Chip</label>
+            <input type="text" class="form-control" name="systemOnChip" id="field_systemOnChip"
+                    ng-model="vm.getWay.systemOnChip"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_cloudPlatformIntegration">Cloud Platform Integration</label>
+            <input type="text" class="form-control" name="cloudPlatformIntegration" id="field_cloudPlatformIntegration"
+                    ng-model="vm.getWay.cloudPlatformIntegration"
+                    />
+        </div>
+
+        <div class="form-group col-xs-6 hide-content">
+            <label for="field_oemName">Oem Name</label>
+            <select class="form-control" id="field_oemName" name="oemName" ng-model="vm.getWay.oemName" ng-options="company as company.name for company in vm.companies track by company.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group col-xs-6 hide-content">
+            <label for="field_addedBy">Added By</label>
+            <select class="form-control" id="field_addedBy" name="addedBy" ng-model="vm.getWay.addedBy" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

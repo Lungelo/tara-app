@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+	{
+            "relationshipName": "company",
+            "otherEntityName": "company",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "userExtra"
+        }
+    ],
+    "fields": [
+         {
+            "fieldName": "phone",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "10"
+        }
+        
+    ],
+    "changelogDate": "21170720132460",
+    "entityTableName": "user_extra",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}
+

@@ -1,0 +1,177 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "oemName",
+            "otherEntityName": "company",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+            ],
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "addedBy",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+            ],
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "sensor"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "3"
+        },
+        {
+            "fieldName": "technologyType",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "3"
+        },
+        {
+            "fieldName": "trl",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "1",
+            "fieldValidateRulesMax": "9"
+        },
+        {
+            "fieldName": "photo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "datasheet",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+		
+		{
+            "fieldName": "sensitivity",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "stability",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },{
+            "fieldName": "accuracy",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "hysteresis",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "drift",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "cost",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "size",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "weight",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "rangeSpan",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "resolution",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "linearity",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "responseTime",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "precision",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "signalToNoiseRatio",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "temperature",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+				
+
+    ],
+    "changelogDate": "20170720132455",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "sensor",
+    "pagination": "pagination"
+}

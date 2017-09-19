@@ -1,0 +1,267 @@
+
+<div>
+    <h2><span>Drilling Tool</span> {{vm.stopDrillingTool.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.name}}</span>
+        </dd>
+        <dt><span>Model</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.model}}</span>
+        </dd>
+        <dt><span>Technology Type</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.technologyType}}</span>
+        </dd>
+        <dt><span>TRL</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.trl}}</span>
+        </dd>
+        <dt><span>Photo</span></dt>
+        <dd>
+            <div ng-if="vm.stopDrillingTool.photo">
+                <a ng-click="vm.openFile(vm.stopDrillingTool.photoContentType, vm.stopDrillingTool.photo)">
+                    <img data-ng-src="{{'data:' + vm.stopDrillingTool.photoContentType + ';base64,' + vm.stopDrillingTool.photo}}" style="max-width: 100%;" alt="stopDrillingTool image"/>
+                </a>
+                
+            </div>
+        </dd>
+        <dt><span>Datasheet</span></dt>
+        <dd>
+            <div ng-if="vm.stopDrillingTool.datasheet">
+                <a ng-click="vm.openFile(vm.stopDrillingTool.datasheetContentType, vm.stopDrillingTool.datasheet)">View/Download</a>
+               
+            </div>
+        </dd>
+        <dt><span>Weight</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.weight}}kg</span>
+        </dd>
+        <dt><span>Tested Weight</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedWeight}}</span>
+        </dd>
+        <dt><span>Length</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.length}}mm</span>
+        </dd>
+        <dt><span>Tested Length</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedLength}}</span>
+        </dd>
+        <dt><span>Drilling Rate</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.drillingRate}}m/s</span>
+        </dd>
+        <dt><span>Tested Drilling Rate</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedDrillingRate}}</span>
+        </dd>
+        <dt><span>Noise Level</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.noiseLevel}}dBA</span>
+        </dd>
+        <dt><span>Tested Noise Level</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedNoiseLevel}}</span>
+        </dd>
+        <dt><span>Setting Up Time</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.settingUpTime}}min</span>
+        </dd>
+        <dt><span>Tested Setting Up Time</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedSettingUpTime}}</span>
+        </dd>
+        <dt><span>Dismantling Time</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.dismantlingTime}}min</span>
+        </dd>
+        <dt><span>Tested Dismantling Time</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedDismantlingTime}}</span>
+        </dd>
+        <dt><span>Water Use Per Metre Drilled</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.waterUsePerMetreDrilled}} l/m</span>
+        </dd>
+        <dt><span>Tested Water Use Per Metre Drilled</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedWaterUsePerMetreDrilled}}</span>
+        </dd>
+        <dt><span>Availability</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.availability}}%</span>
+        </dd>
+        <dt><span>Tested Availability</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedAvailability}}</span>
+        </dd>
+        <dt><span>Cost Per Meter Drilled</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.costPerMeterDrilled}}R/m</span>
+        </dd>
+        <dt><span>Tested Cost Per Meter Drilled</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedCostPerMeterDrilled}}</span>
+        </dd>
+        <dt><span>Hole Size Range</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.holeSizeRange}}mm</span>
+        </dd>
+        <dt><span>Tested Hole Size Range</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedHoleSizeRange}}</span>
+        </dd>
+        <dt><span>Power Source</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.powerSource}}</span>
+        </dd>
+        <dt><span>Tested Power Source</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedPowerSource}}</span>
+        </dd>
+        <dt><span>Power Rating</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.powerRating}}kW</span>
+        </dd>
+        <dt><span>Tested Power Rating</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedPowerRating}}</span>
+        </dd>
+        <dt><span>Cost</span></dt>
+        <dd>
+            <span>R{{vm.stopDrillingTool.cost}}</span>
+        </dd>
+        <dt><span>Tested Cost</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedCost}}</span>
+        </dd>
+        <dt><span>Tramming Speed</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.trammingSpeed}}Sec  </span>
+        </dd>
+        <dt><span>Tested Tramming Speed</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedTrammingSpeed}}</span>
+        </dd>
+        <dt><span>Gradeability</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.gradeability}}Degrees</span>
+        </dd>
+        <dt><span>Tested Gradeability</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedGradeability}}</span>
+        </dd>
+        <dt><span>Number Of Booms</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.numberOfBooms}}</span>
+        </dd>
+        <dt><span>Tested Number Of Booms</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedNumberOfBooms}}</span>
+        </dd>
+        <dt><span>Type Of Boom</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.typeOfBoom}}</span>
+        </dd>
+        <dt><span>Tested Type Of Boom</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedTypeOfBoom}}</span>
+        </dd>
+        <dt><span>Outer Turning Radius</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.outerTurningRadius}}mm</span>
+        </dd>
+        <dt><span>Tested Outer Turning Radius</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedOuterTurningRadius}}</span>
+        </dd>
+        <dt><span>Inner Turning Radius</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.innerTurningRadius}}mm</span>
+        </dd>
+        <dt><span>Tested Inner Turning Radius</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedInnerTurningRadius}}</span>
+        </dd>
+        <dt><span>Observations 1</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.observations1}}</span>
+        </dd>
+        <dt><span>Tested Observations 1</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedObservations1}}</span>
+        </dd>
+        <dt><span>Observations 2</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.observations2}}</span>
+        </dd>
+        <dt><span>Tested Observations 2</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedObservations2}}</span>
+        </dd>
+        <dt><span>Observations 3</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.observations3}}</span>
+        </dd>
+        <dt><span>Tested Observations 3</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedObservations3}}</span>
+        </dd>
+        <dt><span>Observations 4</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.observations4}}</span>
+        </dd>
+        <dt><span>Tested Observations 4</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedObservations4}}</span>
+        </dd>
+        <dt><span>Observations 5</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.observations5}}</span>
+        </dd>
+        <dt><span>Tested Observations 5</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedObservations5}}</span>
+        </dd>
+        <dt><span>Observations 6</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.observations6}}</span>
+        </dd>
+        <dt><span>Tested Observations 6</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedObservations6}}</span>
+        </dd>
+        <dt><span>Operators Comments</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.operators_Comments}}</span>
+        </dd>
+        <dt><span>Tested Operators Comments</span></dt>
+        <dd>
+            <span>{{vm.stopDrillingTool.testedOperators_Comments}}</span>
+        </dd>
+        <dt><span>Oem Name</span></dt>
+        <dd>
+            <a ui-sref="company-detail({id:vm.stopDrillingTool.oemName.id})">{{vm.stopDrillingTool.oemName.name}}</a>
+        </dd>
+        <dt><span>Added By</span></dt>
+        <dd>
+            {{vm.stopDrillingTool.addedBy.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="stop-drilling-tool-detail.edit({id:vm.stopDrillingTool.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

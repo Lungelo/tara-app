@@ -1,0 +1,212 @@
+<div>
+     <h4 class="tool-header">ACTIVITY AREA: DEVELOPMENT</h4>
+    <h4>DRLILLING TOOLS</h4>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="dev-drilling-tool.new"has-any-authority="ROLE_ADMIN, ROLE_USER" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs-down" >
+                         Add New Tool
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="Enter Keyword">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive box-shadow--8dp">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="model"><span>Model</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="technologyType"><span>Technology Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="trl"><span>TRL</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="photo"><span>Photo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="datasheet"><span>Datasheet</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!-- <th jh-sort-by="weight"><span>Weight</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedWeight"><span>Tested Weight</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="length"><span>Length</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedLength"><span>Tested Length</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="drillingRate"><span>Drilling Rate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedDrillingRate"><span>Tested Drilling Rate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="noiseLevel"><span>Noise Level</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedNoiseLevel"><span>Tested Noise Level</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="settingUpTime"><span>Setting Up Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedSettingUpTime"><span>Tested Setting Up Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="dismantlingTime"><span>Dismantling Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedDismantlingTime"><span>Tested Dismantling Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="waterUsePerMetreDrilled"><span>Water Use Per Metre Drilled</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedWaterUsePerMetreDrilled"><span>Tested Water Use Per Metre Drilled</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="availability"><span>Availability</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedAvailability"><span>Tested Availability</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="costPerMeterDrilled"><span>Cost Per Meter Drilled</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedCostPerMeterDrilled"><span>Tested Cost Per Meter Drilled</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="holeSizeRange"><span>Hole Size Range</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedHoleSizeRange"><span>Tested Hole Size Range</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="powerSource"><span>Power Source</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedPowerSource"><span>Tested Power Source</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="powerRating"><span>Power Rating</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedPowerRating"><span>Tested Power Rating</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cost"><span>Cost</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedCost"><span>Tested Cost</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="trammingSpeed"><span>Tramming Speed</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedTrammingSpeed"><span>Tested Tramming Speed</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="workingHeight"><span>Working Height</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedWorkingHeight"><span>Tested Working Height</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="gradeability"><span>Gradeability</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedGradeability"><span>Tested Gradeability</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="numberOfBoom"><span>Number Of Boom</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedNumberOfBoom"><span>Tested Number Of Boom</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="typerOfBoom"><span>Typer Of Boom</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedTyperOfBoom"><span>Tested Typer Of Boom</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="outerTurningRadius"><span>Outer Turning Radius</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedOuterTurningRadius"><span>Tested Outer Turning Radius</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="innerTurningRadius"><span>Inner Turning Radius</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedInnerTurningRadius"><span>Tested Inner Turning Radius</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations1"><span>Observations 1</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations1"><span>Tested Observations 1</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations2"><span>Observations 2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations2"><span>Tested Observations 2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations3"><span>Observations 3</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations3"><span>Tested Observations 3</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations4"><span>Observations 4</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations4"><span>Tested Observations 4</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations5"><span>Observations 5</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations5"><span>Tested Observations 5</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations6"><span>Observations 6</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations6"><span>Tested Observations 6</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="operators_Comments"><span>Operators Comments</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedOperators_Comments"><span>Tested Operators Comments</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="oemName.name"><span>OEM Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+<!--                     <th jh-sort-by="addedBy.login"><span>Added By</span> <span class="glyphicon glyphicon-sort"></span></th>
+ -->                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="devDrillingTool in vm.devDrillingTools track by devDrillingTool.id">
+                    <td><a ui-sref="dev-drilling-tool-detail({id:devDrillingTool.id})">{{devDrillingTool.id}}</a></td>
+                    <td>{{devDrillingTool.name}}</td>
+                    <td>{{devDrillingTool.model}}</td>
+                    <td>{{devDrillingTool.technologyType}}</td>
+                    <td>{{devDrillingTool.trl}}</td>
+                    <td>
+                        <a ng-if="devDrillingTool.photo" ng-click="vm.openFile(devDrillingTool.photoContentType, devDrillingTool.photo)">
+                            <img data-ng-src="{{'data:' + devDrillingTool.photoContentType + ';base64,' + devDrillingTool.photo}}" style="max-height: 30px;" alt="devDrillingTool image"/>
+                        </a>
+                        <span ng-if="devDrillingTool.photo"></span>
+                    </td>
+                    <td>
+                        <a ng-if="devDrillingTool.datasheet" ng-click="vm.openFile(devDrillingTool.datasheetContentType, devDrillingTool.datasheet)">View/Download</a>
+                        <span ng-if="devDrillingTool.datasheet"></span>
+                    </td>
+                    <!-- <td>{{devDrillingTool.weight}}</td>
+                    <td>{{devDrillingTool.testedWeight}}</td>
+                    <td>{{devDrillingTool.length}}</td>
+                    <td>{{devDrillingTool.testedLength}}</td>
+                    <td>{{devDrillingTool.drillingRate}}</td>
+                    <td>{{devDrillingTool.testedDrillingRate}}</td>
+                    <td>{{devDrillingTool.noiseLevel}}</td>
+                    <td>{{devDrillingTool.testedNoiseLevel}}</td>
+                    <td>{{devDrillingTool.settingUpTime}}</td>
+                    <td>{{devDrillingTool.testedSettingUpTime}}</td>
+                    <td>{{devDrillingTool.dismantlingTime}}</td>
+                    <td>{{devDrillingTool.testedDismantlingTime}}</td>
+                    <td>{{devDrillingTool.waterUsePerMetreDrilled}}</td>
+                    <td>{{devDrillingTool.testedWaterUsePerMetreDrilled}}</td>
+                    <td>{{devDrillingTool.availability}}</td>
+                    <td>{{devDrillingTool.testedAvailability}}</td>
+                    <td>{{devDrillingTool.costPerMeterDrilled}}</td>
+                    <td>{{devDrillingTool.testedCostPerMeterDrilled}}</td>
+                    <td>{{devDrillingTool.holeSizeRange}}</td>
+                    <td>{{devDrillingTool.testedHoleSizeRange}}</td>
+                    <td>{{devDrillingTool.powerSource}}</td>
+                    <td>{{devDrillingTool.testedPowerSource}}</td>
+                    <td>{{devDrillingTool.powerRating}}</td>
+                    <td>{{devDrillingTool.testedPowerRating}}</td>
+                    <td>{{devDrillingTool.cost}}</td>
+                    <td>{{devDrillingTool.testedCost}}</td>
+                    <td>{{devDrillingTool.trammingSpeed}}</td>
+                    <td>{{devDrillingTool.testedTrammingSpeed}}</td>
+                    <td>{{devDrillingTool.workingHeight}}</td>
+                    <td>{{devDrillingTool.testedWorkingHeight}}</td>
+                    <td>{{devDrillingTool.gradeability}}</td>
+                    <td>{{devDrillingTool.testedGradeability}}</td>
+                    <td>{{devDrillingTool.numberOfBoom}}</td>
+                    <td>{{devDrillingTool.testedNumberOfBoom}}</td>
+                    <td>{{devDrillingTool.typerOfBoom}}</td>
+                    <td>{{devDrillingTool.testedTyperOfBoom}}</td>
+                    <td>{{devDrillingTool.outerTurningRadius}}</td>
+                    <td>{{devDrillingTool.testedOuterTurningRadius}}</td>
+                    <td>{{devDrillingTool.innerTurningRadius}}</td>
+                    <td>{{devDrillingTool.testedInnerTurningRadius}}</td>
+                    <td>{{devDrillingTool.observations1}}</td>
+                    <td>{{devDrillingTool.testedObservations1}}</td>
+                    <td>{{devDrillingTool.observations2}}</td>
+                    <td>{{devDrillingTool.testedObservations2}}</td>
+                    <td>{{devDrillingTool.observations3}}</td>
+                    <td>{{devDrillingTool.testedObservations3}}</td>
+                    <td>{{devDrillingTool.observations4}}</td>
+                    <td>{{devDrillingTool.testedObservations4}}</td>
+                    <td>{{devDrillingTool.observations5}}</td>
+                    <td>{{devDrillingTool.testedObservations5}}</td>
+                    <td>{{devDrillingTool.observations6}}</td>
+                    <td>{{devDrillingTool.testedObservations6}}</td>
+                    <td>{{devDrillingTool.operators_Comments}}</td>
+                    <td>{{devDrillingTool.testedOperators_Comments}}</td> -->
+                    <td>
+                        <a ui-sref="company-detail({id:devDrillingTool.oemName.id})">{{devDrillingTool.oemName.name}}</a>
+                    </td>
+                   <!--  <td>
+                        {{devDrillingTool.addedBy.login}}
+                    </td> -->
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="dev-drilling-tool-detail({id:devDrillingTool.id})"
+                                    class="btn btn-info btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER, GENERAL_USER">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="dev-drilling-tool.edit({id:devDrillingTool.id})"
+                                    class="btn btn-primary btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="dev-drilling-tool.delete({id:devDrillingTool.id})"
+                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

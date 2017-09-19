@@ -1,0 +1,115 @@
+
+<div>
+    <h2><span>Get Way</span> {{vm.getWay.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.getWay.name}}</span>
+        </dd>
+        <dt><span>Technology Type</span></dt>
+        <dd>
+            <span>{{vm.getWay.technologyType}}</span>
+        </dd>
+        <dt><span>Trl</span></dt>
+        <dd>
+            <span>{{vm.getWay.trl}}</span>
+        </dd>
+        <dt><span>Photo</span></dt>
+        <dd>
+            <div ng-if="vm.getWay.photo">
+                <a ng-click="vm.openFile(vm.getWay.photoContentType, vm.getWay.photo)">
+                    <img data-ng-src="{{'data:' + vm.getWay.photoContentType + ';base64,' + vm.getWay.photo}}" style="max-width: 100%;" alt="getWay image"/>
+                </a>
+                
+            </div>
+        </dd>
+        <dt><span>Datasheet</span></dt>
+        <dd>
+            <div ng-if="vm.getWay.datasheet">
+                <a ng-click="vm.openFile(vm.getWay.datasheetContentType, vm.getWay.datasheet)">View/Download</a>
+                
+            </div>
+        </dd>
+        <dt><span>Compatibility</span></dt>
+        <dd>
+            <span>{{vm.getWay.compatibility}}</span>
+        </dd>
+        <dt><span>Upgradeability</span></dt>
+        <dd>
+            <span>{{vm.getWay.upgradeability}}</span>
+        </dd>
+        <dt><span>Dust Proof</span></dt>
+        <dd>
+            <span>{{vm.getWay.dustProof}}</span>
+        </dd>
+        <dt><span>Water Or Condensation Proof</span></dt>
+        <dd>
+            <span>{{vm.getWay.waterOrCondensationProof}}</span>
+        </dd>
+        <dt><span>Temperature</span></dt>
+        <dd>
+            <span>{{vm.getWay.temperature}}</span>
+        </dd>
+        <dt><span>Ease Of Installation</span></dt>
+        <dd>
+            <span>{{vm.getWay.easeOfInstallation}}</span>
+        </dd>
+        <dt><span>Maintainability</span></dt>
+        <dd>
+            <span>{{vm.getWay.maintainability}}</span>
+        </dd>
+        <dt><span>Size</span></dt>
+        <dd>
+            <span>{{vm.getWay.size}}</span>
+        </dd>
+        <dt><span>Ram</span></dt>
+        <dd>
+            <span>{{vm.getWay.ram}}</span>
+        </dd>
+        <dt><span>Storage</span></dt>
+        <dd>
+            <span>{{vm.getWay.storage}}</span>
+        </dd>
+        <dt><span>Operating Temperature</span></dt>
+        <dd>
+            <span>{{vm.getWay.operatingTemperature}}</span>
+        </dd>
+        <dt><span>Power</span></dt>
+        <dd>
+            <span>{{vm.getWay.power}}</span>
+        </dd>
+        <dt><span>Relative Humidity</span></dt>
+        <dd>
+            <span>{{vm.getWay.relativeHumidity}}</span>
+        </dd>
+        <dt><span>System On Chip</span></dt>
+        <dd>
+            <span>{{vm.getWay.systemOnChip}}</span>
+        </dd>
+        <dt><span>Cloud Platform Integration</span></dt>
+        <dd>
+            <span>{{vm.getWay.cloudPlatformIntegration}}</span>
+        </dd>
+        <dt><span>Oem Name</span></dt>
+        <dd>
+            <a ui-sref="company-detail({id:vm.getWay.oemName.id})">{{vm.getWay.oemName.name}}</a>
+        </dd>
+        <dt><span>Added By</span></dt>
+        <dd>
+            {{vm.getWay.addedBy.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="get-way-detail.edit({id:vm.getWay.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

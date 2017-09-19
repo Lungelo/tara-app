@@ -1,0 +1,196 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "oemName",
+            "otherEntityName": "company",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+            ],
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "addedBy",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+            ],
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "sensorNode"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "3"
+        },
+        {
+            "fieldName": "technologyType",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "3"
+        },
+        {
+            "fieldName": "trl",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "1",
+            "fieldValidateRulesMax": "9"
+        },
+        {
+            "fieldName": "photo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "datasheet",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+		
+		{
+            "fieldName": "size",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		
+		{
+            "fieldName": "cost",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		
+		{
+            "fieldName": "bandwidth",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "dataRate",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },{
+            "fieldName": "flashMemory",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "ram",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "energyUsage",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		
+		
+		{
+            "fieldName": "sleepEnergy",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "dutyCycle",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "frequency",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "range",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		 {
+            "fieldName": "mobility",
+            "fieldType": "Choice",
+            "fieldValues": "YES, NO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "resilience",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		
+		{
+            "fieldName": "selfTesting",
+            "fieldType": "Choice",
+            "fieldValues": "YES, NO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "selfCalibration",
+            "fieldType": "Choice",
+            "fieldValues": "YES, NO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "selfRepair",
+            "fieldType": "Choice",
+            "fieldValues": "YES, NO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "transmissionPower",
+            "fieldType": "Float"
+        }
+				
+    ],
+    "changelogDate": "20170720132456",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "sensor_node",
+    "pagination": "pagination"
+}

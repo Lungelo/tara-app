@@ -1,0 +1,159 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "oemName",
+            "otherEntityName": "company",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                
+            ],
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "addedBy",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+            ],
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "getWay"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "3"
+        },
+		
+        {
+            "fieldName": "technologyType",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "3"
+        },
+        {
+            "fieldName": "trl",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "1",
+            "fieldValidateRulesMax": "9"
+        },
+        {
+            "fieldName": "photo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "datasheet",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+		
+		{
+            "fieldName": "compatibility",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "upgradeability",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		
+		{
+            "fieldName": "dustProof",
+            "fieldType": "Choice",
+            "fieldValues": "YES, NO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		
+		{
+            "fieldName": "waterOrCondensationProof",
+            "fieldType": "Choice",
+            "fieldValues": "YES, NO",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "temperature",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		
+		{
+            "fieldName": "easeOfInstallation",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "maintainability",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "size",
+            "fieldType": "Float"
+        },
+		{
+            "fieldName": "ram",
+            "fieldType": "String"
+        },
+		{
+            "fieldName": "storage",
+            "fieldType": "String"
+        },
+		{
+            "fieldName": "operatingTemperature",
+            "fieldType": "Float"
+        },
+		{
+            "fieldName": "power",
+            "fieldType": "String"
+        },
+		{
+            "fieldName": "relativeHumidity",
+            "fieldType": "Float"
+        },
+		{
+            "fieldName": "systemOnChip",
+            "fieldType": "String"
+        },
+		{
+            "fieldName": "cloudPlatformIntegration",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170720132459",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "get_way",
+    "pagination": "pagination"
+}

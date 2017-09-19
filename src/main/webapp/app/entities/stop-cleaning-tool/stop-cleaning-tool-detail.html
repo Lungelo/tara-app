@@ -1,0 +1,251 @@
+
+<div>
+    <h2><span>Cleaning Tool</span> {{vm.stopCleaningTool.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.name}}</span>
+        </dd>
+        <dt><span>Model</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.model}}</span>
+        </dd>
+        <dt><span>Technology Type</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.technologyType}}</span>
+        </dd>
+        <dt><span>TRL</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.trl}}</span>
+        </dd>
+        <dt><span>Photo</span></dt>
+        <dd>
+            <div ng-if="vm.stopCleaningTool.photo">
+                <a ng-click="vm.openFile(vm.stopCleaningTool.photoContentType, vm.stopCleaningTool.photo)">
+                    <img data-ng-src="{{'data:' + vm.stopCleaningTool.photoContentType + ';base64,' + vm.stopCleaningTool.photo}}" style="max-width: 100%;" alt="stopCleaningTool image"/>
+                </a>
+                
+            </div>
+        </dd>
+        <dt><span>Datasheet</span></dt>
+        <dd>
+            <div ng-if="vm.stopCleaningTool.datasheet">
+                <a ng-click="vm.openFile(vm.stopCleaningTool.datasheetContentType, vm.stopCleaningTool.datasheet)">View/Download</a>
+                
+            </div>
+        </dd>
+        <dt><span>Tramming Capacity</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.trammingCapacity}}M3 or tonne</span>
+        </dd>
+        <dt><span>Tested Tramming Capacity</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedTrammingCapacity}}</span>
+        </dd>
+        <dt><span>Height</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.height}}mm</span>
+        </dd>
+        <dt><span>Tested Height</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedHeight}}</span>
+        </dd>
+        <dt><span>Weight</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.weight}}kg</span>
+        </dd>
+        <dt><span>Tested Weight</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedWeight}}</span>
+        </dd>
+        <dt><span>Length</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.length}}mm</span>
+        </dd>
+        <dt><span>Tested Length</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedLength}}</span>
+        </dd>
+        <dt><span>Rpm Output</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.rpmOutput}}RPM</span>
+        </dd>
+        <dt><span>Tested Rpm Output</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedRpmOutput}}</span>
+        </dd>
+        <dt><span>Torque</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.torque}}kNm</span>
+        </dd>
+        <dt><span>Tested Torque</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedTorque}}</span>
+        </dd>
+        <dt><span>Tank Range</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.tankRange}}hrs</span>
+        </dd>
+        <dt><span>Tested Tank Range</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedTankRange}}</span>
+        </dd>
+        <dt><span>Fuel Consumption</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.fuelConsumption}}l/hr</span>
+        </dd>
+        <dt><span>Tested Fuel Consumption</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedFuelConsumption}}</span>
+        </dd>
+        <dt><span>Availability</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.availability}}%</span>
+        </dd>
+        <dt><span>Tested Availability</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedAvailability}}</span>
+        </dd>
+        <dt><span>Operating Cost Per Tonne</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.operatingCostPerTonne}}R/t</span>
+        </dd>
+        <dt><span>Tested Operating Cost Per Tonne</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedOperatingCostPerTonne}}</span>
+        </dd>
+        <dt><span>Fuel Consumption Per Tonne Hauled</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.fuelConsumptionPerTonneHauled}}l/t</span>
+        </dd>
+        <dt><span>Tested Fuel Consumption Per Tonne Hauled</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedFuelConsumptionPerTonneHauled}}</span>
+        </dd>
+        <dt><span>Control System</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.controlSystem}}</span>
+        </dd>
+        <dt><span>Tested Control System</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedControlSystem}}</span>
+        </dd>
+        <dt><span>Cycle Time</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.cycleTime}}S</span>
+        </dd>
+        <dt><span>Tested Cycle Time</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedCycleTime}}</span>
+        </dd>
+        <dt><span>Turning Radius Inner</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.turningRadiusInner}}mm</span>
+        </dd>
+        <dt><span>Tested Turning Radius Inner</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedTurningRadiusInner}}</span>
+        </dd>
+        <dt><span>Turning Radius Outer</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.turningRadiusOuter}}mm</span>
+        </dd>
+        <dt><span>Tested Turning Radius Outer</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedTurningRadiusOuter}}</span>
+        </dd>
+        <dt><span>Lubrication Type</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.lubricationType}}</span>
+        </dd>
+        <dt><span>Tested Lubrication Type</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedLubricationType}}</span>
+        </dd>
+        <dt><span>Temperature At Ambient</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.temperatureAtAmbient}}</span>
+        </dd>
+        <dt><span>Tested Temperature At Ambient</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedTemperatureAtAmbient}}</span>
+        </dd>
+        <dt><span>Observations 1</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.observations1}}</span>
+        </dd>
+        <dt><span>Tested Observations 1</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedObservations1}}</span>
+        </dd>
+        <dt><span>Observations 2</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.observations2}}</span>
+        </dd>
+        <dt><span>Tested Observations 2</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedObservations2}}</span>
+        </dd>
+        <dt><span>Observations 3</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.observations3}}</span>
+        </dd>
+        <dt><span>Tested Observations 3</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedObservations3}}</span>
+        </dd>
+        <dt><span>Observations 4</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.observations4}}</span>
+        </dd>
+        <dt><span>Tested Observations 4</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedObservations4}}</span>
+        </dd>
+        <dt><span>Observations 5</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.observations5}}</span>
+        </dd>
+        <dt><span>Tested Observations 5</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedObservations5}}</span>
+        </dd>
+        <dt><span>Observations 6</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.observations6}}</span>
+        </dd>
+        <dt><span>Tested Observations 6</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedObservations6}}</span>
+        </dd>
+        <dt><span>Operators Comments</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.operators_Comments}}</span>
+        </dd>
+        <dt><span>Tested Operators Comments</span></dt>
+        <dd>
+            <span>{{vm.stopCleaningTool.testedOperators_Comments}}</span>
+        </dd>
+        <dt><span>Oem Name</span></dt>
+        <dd>
+            <a ui-sref="company-detail({id:vm.stopCleaningTool.oemName.id})">{{vm.stopCleaningTool.oemName.name}}</a>
+        </dd>
+        <dt><span>Added By</span></dt>
+        <dd>
+            {{vm.stopCleaningTool.addedBy.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="stop-cleaning-tool-detail.edit({id:vm.stopCleaningTool.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

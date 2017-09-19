@@ -1,0 +1,200 @@
+<div>
+   <h4 class="tool-header">ACTIVITY AREA: STOPING</h4>
+    <h4>SUPPORTING TOOLS</h4>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="stop-supporting-tool.new" has-any-authority="ROLE_ADMIN, ROLE_USER">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs-down" >
+                        Add New Tool
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="Enter Keyword">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive box-shadow--8dp">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="model"><span>Model</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="technologyType"><span>Technology Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="trl"><span>TRL</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="photo"><span>Photo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="datasheet"><span>Datasheet</span> <span class="glyphicon glyphicon-sort"></span></th>
+                   <!--  <th jh-sort-by="typeOfMachine"><span>Type Of Machine</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedTypeOfMachine"><span>Tested Type Of Machine</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="weight"><span>Weight</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedWeight"><span>Tested Weight</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="length"><span>Length</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedLength"><span>Tested Length</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="width"><span>Width</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedWidth"><span>Tested Width</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="holeSize"><span>Hole Size</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedHoleSize"><span>Tested Hole Size</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="drillWaterConsumption"><span>Drill Water Consumption</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedDrillWaterConsumption"><span>Tested Drill Water Consumption</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cycleTimeBolting"><span>Cycle Time Bolting</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedCycleTimeBolting"><span>Tested Cycle Time Bolting</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="waterConsumptionPerMetreDrilled"><span>Water Consumption Per Metre Drilled</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedWaterConsumptionPerMetreDrilled"><span>Tested Water Consumption Per Metre Drilled</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="powerSource"><span>Power Source</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedPowerSource"><span>Tested Power Source</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="trammingSpeed"><span>Tramming Speed</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedTrammingSpeed"><span>Tested Tramming Speed</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="boltLengthRange"><span>Bolt Length Range</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedBoltLengthRange"><span>Tested Bolt Length Range</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="drillSpeed"><span>Drill Speed</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedDrillSpeed"><span>Tested Drill Speed</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="gradeability"><span>Gradeability</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedGradeability"><span>Tested Gradeability</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="numberOfBooms"><span>Number Of Booms</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedNumberOfBooms"><span>Tested Number Of Booms</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="typeOfBoom"><span>Type Of Boom</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedTypeOfBoom"><span>Tested Type Of Boom</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="outerTurningRadius"><span>Outer Turning Radius</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedOuterTurningRadius"><span>Tested Outer Turning Radius</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="innerTurningRadius"><span>Inner Turning Radius</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedInnerTurningRadius"><span>Tested Inner Turning Radius</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations1"><span>Observations 1</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations1"><span>Tested Observations 1</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations2"><span>Observations 2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations2"><span>Tested Observations 2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations3"><span>Observations 3</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations3"><span>Tested Observations 3</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations4"><span>Observations 4</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations4"><span>Tested Observations 4</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations5"><span>Observations 5</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations5"><span>Tested Observations 5</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations6"><span>Observations 6</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations6"><span>Tested Observations 6</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="operators_Comments"><span>Operators Comments</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedOperators_Comments"><span>Tested Operators Comments</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="oemName.name"><span>OEM Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+<!--                     <th jh-sort-by="addedBy.login"><span>Added By</span> <span class="glyphicon glyphicon-sort"></span></th>
+ -->                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="stopSupportingTool in vm.stopSupportingTools track by stopSupportingTool.id">
+                    <td><a ui-sref="stop-supporting-tool-detail({id:stopSupportingTool.id})">{{stopSupportingTool.id}}</a></td>
+                    <td>{{stopSupportingTool.name}}</td>
+                    <td>{{stopSupportingTool.model}}</td>
+                    <td>{{stopSupportingTool.technologyType}}</td>
+                    <td>{{stopSupportingTool.trl}}</td>
+                    <td>
+                        <a ng-if="stopSupportingTool.photo" ng-click="vm.openFile(stopSupportingTool.photoContentType, stopSupportingTool.photo)">
+                            <img data-ng-src="{{'data:' + stopSupportingTool.photoContentType + ';base64,' + stopSupportingTool.photo}}" style="max-height: 30px;" alt="stopSupportingTool image"/>
+                        </a>
+                        <span ng-if="stopSupportingTool.photo"></span>
+                    </td>
+                    <td>
+                        <a ng-if="stopSupportingTool.datasheet" ng-click="vm.openFile(stopSupportingTool.datasheetContentType, stopSupportingTool.datasheet)">View/Download</a>
+                        <span ng-if="stopSupportingTool.datasheet"></span>
+                    </td>
+                    <!-- <td>{{stopSupportingTool.typeOfMachine}}</td>
+                    <td>{{stopSupportingTool.testedTypeOfMachine}}</td>
+                    <td>{{stopSupportingTool.weight}}</td>
+                    <td>{{stopSupportingTool.testedWeight}}</td>
+                    <td>{{stopSupportingTool.length}}</td>
+                    <td>{{stopSupportingTool.testedLength}}</td>
+                    <td>{{stopSupportingTool.width}}</td>
+                    <td>{{stopSupportingTool.testedWidth}}</td>
+                    <td>{{stopSupportingTool.holeSize}}</td>
+                    <td>{{stopSupportingTool.testedHoleSize}}</td>
+                    <td>{{stopSupportingTool.drillWaterConsumption}}</td>
+                    <td>{{stopSupportingTool.testedDrillWaterConsumption}}</td>
+                    <td>{{stopSupportingTool.cycleTimeBolting}}</td>
+                    <td>{{stopSupportingTool.testedCycleTimeBolting}}</td>
+                    <td>{{stopSupportingTool.waterConsumptionPerMetreDrilled}}</td>
+                    <td>{{stopSupportingTool.testedWaterConsumptionPerMetreDrilled}}</td>
+                    <td>{{stopSupportingTool.powerSource}}</td>
+                    <td>{{stopSupportingTool.testedPowerSource}}</td>
+                    <td>{{stopSupportingTool.trammingSpeed}}</td>
+                    <td>{{stopSupportingTool.testedTrammingSpeed}}</td>
+                    <td>{{stopSupportingTool.boltLengthRange}}</td>
+                    <td>{{stopSupportingTool.testedBoltLengthRange}}</td>
+                    <td>{{stopSupportingTool.drillSpeed}}</td>
+                    <td>{{stopSupportingTool.testedDrillSpeed}}</td>
+                    <td>{{stopSupportingTool.gradeability}}</td>
+                    <td>{{stopSupportingTool.testedGradeability}}</td>
+                    <td>{{stopSupportingTool.numberOfBooms}}</td>
+                    <td>{{stopSupportingTool.testedNumberOfBooms}}</td>
+                    <td>{{stopSupportingTool.typeOfBoom}}</td>
+                    <td>{{stopSupportingTool.testedTypeOfBoom}}</td>
+                    <td>{{stopSupportingTool.outerTurningRadius}}</td>
+                    <td>{{stopSupportingTool.testedOuterTurningRadius}}</td>
+                    <td>{{stopSupportingTool.innerTurningRadius}}</td>
+                    <td>{{stopSupportingTool.testedInnerTurningRadius}}</td>
+                    <td>{{stopSupportingTool.observations1}}</td>
+                    <td>{{stopSupportingTool.testedObservations1}}</td>
+                    <td>{{stopSupportingTool.observations2}}</td>
+                    <td>{{stopSupportingTool.testedObservations2}}</td>
+                    <td>{{stopSupportingTool.observations3}}</td>
+                    <td>{{stopSupportingTool.testedObservations3}}</td>
+                    <td>{{stopSupportingTool.observations4}}</td>
+                    <td>{{stopSupportingTool.testedObservations4}}</td>
+                    <td>{{stopSupportingTool.observations5}}</td>
+                    <td>{{stopSupportingTool.testedObservations5}}</td>
+                    <td>{{stopSupportingTool.observations6}}</td>
+                    <td>{{stopSupportingTool.testedObservations6}}</td>
+                    <td>{{stopSupportingTool.operators_Comments}}</td>
+                    <td>{{stopSupportingTool.testedOperators_Comments}}</td> -->
+                    <td>
+                        <a ui-sref="company-detail({id:stopSupportingTool.oemName.id})">{{stopSupportingTool.oemName.name}}</a>
+                    </td>
+                    <!-- <td>
+                        {{stopSupportingTool.addedBy.login}}
+                    </td> -->
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="stop-supporting-tool-detail({id:stopSupportingTool.id})"
+                                    class="btn btn-info btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER, GENERAL_USER">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="stop-supporting-tool.edit({id:stopSupportingTool.id})"
+                                    class="btn btn-primary btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="stop-supporting-tool.delete({id:stopSupportingTool.id})"
+                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

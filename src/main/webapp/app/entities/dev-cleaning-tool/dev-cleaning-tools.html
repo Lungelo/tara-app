@@ -1,0 +1,200 @@
+<div>
+        <h4 class="tool-header">ACTIVITY AREA: DEVELOPMENT</h4>
+    <h4>CLEANING TOOLS</h4>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="dev-cleaning-tool.new" has-any-authority="ROLE_ADMIN, ROLE_USER">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs-down" >
+                        Add New Tool
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="Enter Keyword">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive box-shadow--8dp ">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="model"><span>Model</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="technologyType"><span class="text-nowrap">Technology Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="trl"><span>TRL</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="photo"><span class="text-nowrap">Photo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="datasheet"><span class="text-nowrap">Datasheet</span> <span class="glyphicon glyphicon-sort"></span></th>
+                   <!--  <th jh-sort-by="trammingCapacity"><span>Tramming Capacity</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedTrammingCapacity"><span>Tested Tramming Capacity</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="height"><span>Height</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedHeight"><span>Tested Height</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="weight"><span>Weight</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedWeight"><span>Tested Weight</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="length"><span>Length</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedLength"><span>Tested Length</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="rpmOutput"><span>Rpm Output</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedRpmOutput"><span>Tested Rpm Output</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="torque"><span>Torque</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedTorque"><span>Tested Torque</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tankRange"><span>Tank Range</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedTankRange"><span>Tested Tank Range</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fuelConsumption"><span>Fuel Consumption</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedFuelConsumption"><span>Tested Fuel Consumption</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="availability"><span>Availability</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedAvailability"><span>Tested Availability</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="operatingCostPerTonne"><span>Operating Cost Per Tonne</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedOperatingCostPerTonne"><span>Tested Operating Cost Per Tonne</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fuelConsumptionPerTonneHauled"><span>Fuel Consumption Per Tonne Hauled</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testFuelConsumptionPerTonneHauled"><span>Test Fuel Consumption Per Tonne Hauled</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="controlSystem"><span>Control System</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedControlSystem"><span>Tested Control System</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cycleTime"><span>Cycle Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedCycleTime"><span>Tested Cycle Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="turningRadiusInner"><span>Turning Radius Inner</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedTurningRadiusInner"><span>Tested Turning Radius Inner</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="turningRadiusOuter"><span>Turning Radius Outer</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedTurningRadiusOuter"><span>Tested Turning Radius Outer</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lubricationType"><span>Lubrication Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedLubricationType"><span>Tested Lubrication Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="temperatureAtAmbient"><span>Temperature At Ambient</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedTemperatureAtAmbient"><span>Tested Temperature At Ambient</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations1"><span>Observations 1</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations1"><span>Tested Observations 1</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations2"><span>Observations 2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations2"><span>Tested Observations 2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations3"><span>Observations 3</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations3"><span>Tested Observations 3</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations4"><span>Observations 4</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations4"><span>Tested Observations 4</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations5"><span>Observations 5</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations5"><span>Tested Observations 5</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations6"><span>Observations 6</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations6"><span>Tested Observations 6</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="operators_Comments"><span>Operators Comments</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedOperators_Comments"><span>Tested Operators Comments</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="oemName.name"><span class="text-nowrap">OEM Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+<!--                     <th jh-sort-by="addedBy.login"><span>Added By</span> <span class="glyphicon glyphicon-sort"></span></th>
+ -->                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="devCleaningTool in vm.devCleaningTools track by devCleaningTool.id">
+                    <td><a ui-sref="dev-cleaning-tool-detail({id:devCleaningTool.id})">{{devCleaningTool.id}}</a></td>
+                    <td>{{devCleaningTool.name}}</td>
+                    <td>{{devCleaningTool.model}}</td>
+                    <td>{{devCleaningTool.technologyType}}</td>
+                    <td>{{devCleaningTool.trl}}</td>
+                    <td>
+                        <a ng-if="devCleaningTool.photo" ng-click="vm.openFile(devCleaningTool.photoContentType, devCleaningTool.photo)">
+                            <img data-ng-src="{{'data:' + devCleaningTool.photoContentType + ';base64,' + devCleaningTool.photo}}" style="max-height: 30px;" alt="devCleaningTool image"/>
+                        </a>
+                        <span ng-if="devCleaningTool.photo"> </span>
+                    </td>
+                    <td>
+                        <a ng-if="devCleaningTool.datasheet" ng-click="vm.openFile(devCleaningTool.datasheetContentType, devCleaningTool.datasheet)">View/Download</a>
+                        <span ng-if="devCleaningTool.datasheet"></span>
+                    </td>
+                   <!--  <td>{{devCleaningTool.trammingCapacity}}</td>
+                    <td>{{devCleaningTool.testedTrammingCapacity}}</td>
+                    <td>{{devCleaningTool.height}}</td>
+                    <td>{{devCleaningTool.testedHeight}}</td>
+                    <td>{{devCleaningTool.weight}}</td>
+                    <td>{{devCleaningTool.testedWeight}}</td>
+                    <td>{{devCleaningTool.length}}</td>
+                    <td>{{devCleaningTool.testedLength}}</td>
+                    <td>{{devCleaningTool.rpmOutput}}</td>
+                    <td>{{devCleaningTool.testedRpmOutput}}</td>
+                    <td>{{devCleaningTool.torque}}</td>
+                    <td>{{devCleaningTool.testedTorque}}</td>
+                    <td>{{devCleaningTool.tankRange}}</td>
+                    <td>{{devCleaningTool.testedTankRange}}</td>
+                    <td>{{devCleaningTool.fuelConsumption}}</td>
+                    <td>{{devCleaningTool.testedFuelConsumption}}</td>
+                    <td>{{devCleaningTool.availability}}</td>
+                    <td>{{devCleaningTool.testedAvailability}}</td>
+                    <td>{{devCleaningTool.operatingCostPerTonne}}</td>
+                    <td>{{devCleaningTool.testedOperatingCostPerTonne}}</td>
+                    <td>{{devCleaningTool.fuelConsumptionPerTonneHauled}}</td>
+                    <td>{{devCleaningTool.testFuelConsumptionPerTonneHauled}}</td>
+                    <td>{{devCleaningTool.controlSystem}}</td>
+                    <td>{{devCleaningTool.testedControlSystem}}</td>
+                    <td>{{devCleaningTool.cycleTime}}</td>
+                    <td>{{devCleaningTool.testedCycleTime}}</td>
+                    <td>{{devCleaningTool.turningRadiusInner}}</td>
+                    <td>{{devCleaningTool.testedTurningRadiusInner}}</td>
+                    <td>{{devCleaningTool.turningRadiusOuter}}</td>
+                    <td>{{devCleaningTool.testedTurningRadiusOuter}}</td>
+                    <td>{{devCleaningTool.lubricationType}}</td>
+                    <td>{{devCleaningTool.testedLubricationType}}</td>
+                    <td>{{devCleaningTool.temperatureAtAmbient}}</td>
+                    <td>{{devCleaningTool.testedTemperatureAtAmbient}}</td>
+                    <td>{{devCleaningTool.observations1}}</td>
+                    <td>{{devCleaningTool.testedObservations1}}</td>
+                    <td>{{devCleaningTool.observations2}}</td>
+                    <td>{{devCleaningTool.testedObservations2}}</td>
+                    <td>{{devCleaningTool.observations3}}</td>
+                    <td>{{devCleaningTool.testedObservations3}}</td>
+                    <td>{{devCleaningTool.observations4}}</td>
+                    <td>{{devCleaningTool.testedObservations4}}</td>
+                    <td>{{devCleaningTool.observations5}}</td>
+                    <td>{{devCleaningTool.testedObservations5}}</td>
+                    <td>{{devCleaningTool.observations6}}</td>
+                    <td>{{devCleaningTool.testedObservations6}}</td>
+                    <td>{{devCleaningTool.operators_Comments}}</td>
+                    <td>{{devCleaningTool.testedOperators_Comments}}</td> -->
+                    <td>
+                        <a ui-sref="company-detail({id:devCleaningTool.oemName.id})">{{devCleaningTool.oemName.name}}</a>
+                    </td>
+                    <!-- <td>
+                        {{devCleaningTool.addedBy.login}}
+                    </td> -->
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="dev-cleaning-tool-detail({id:devCleaningTool.id})"
+                                    class="btn btn-info btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER, GENERAL_USER">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="dev-cleaning-tool.edit({id:devCleaningTool.id})"
+                                    class="btn btn-primary btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="dev-cleaning-tool.delete({id:devCleaningTool.id})"
+                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

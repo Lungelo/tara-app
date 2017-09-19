@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity Sensor.
+    -->
+    <changeSet id="20170720132455-1" author="jhipster">
+        <createTable tableName="sensor">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="technology_type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="trl" type="integer">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="photo" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="photo_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="datasheet" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="datasheet_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="sensitivity" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="stability" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="accuracy" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="hysteresis" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="drift" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="jhi_cost" type="decimal(10,2)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="jhi_size" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="weight" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="range_span" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="resolution" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="linearity" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="response_time" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="jhi_precision" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="signal_to_noise_ratio" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="temperature" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="oem_name_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="added_by_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

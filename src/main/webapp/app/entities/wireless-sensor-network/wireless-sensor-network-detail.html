@@ -1,0 +1,83 @@
+
+<div>
+    <h2><span>Wireless Sensor Network</span> {{vm.wirelessSensorNetwork.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.wirelessSensorNetwork.name}}</span>
+        </dd>
+        <dt><span>Technology Type</span></dt>
+        <dd>
+            <span>{{vm.wirelessSensorNetwork.technologyType}}</span>
+        </dd>
+        <dt><span>Trl</span></dt>
+        <dd>
+            <span>{{vm.wirelessSensorNetwork.trl}}</span>
+        </dd>
+        <dt><span>Photo</span></dt>
+        <dd>
+            <div ng-if="vm.wirelessSensorNetwork.photo">
+                <a ng-click="vm.openFile(vm.wirelessSensorNetwork.photoContentType, vm.wirelessSensorNetwork.photo)">
+                    <img data-ng-src="{{'data:' + vm.wirelessSensorNetwork.photoContentType + ';base64,' + vm.wirelessSensorNetwork.photo}}" style="max-width: 100%;" alt="wirelessSensorNetwork image"/>
+                </a>
+                
+            </div>
+        </dd>
+        <dt><span>Datasheet</span></dt>
+        <dd>
+            <div ng-if="vm.wirelessSensorNetwork.datasheet">
+                <a ng-click="vm.openFile(vm.wirelessSensorNetwork.datasheetContentType, vm.wirelessSensorNetwork.datasheet)">View/Download</a>
+                
+            </div>
+        </dd>
+        <dt><span>Power</span></dt>
+        <dd>
+            <span>{{vm.wirelessSensorNetwork.power}}</span>
+        </dd>
+        <dt><span>Operating System</span></dt>
+        <dd>
+            <span>{{vm.wirelessSensorNetwork.operatingSystem}}</span>
+        </dd>
+        <dt><span>Protocol</span></dt>
+        <dd>
+            <span>{{vm.wirelessSensorNetwork.protocol}}</span>
+        </dd>
+        <dt><span>Cost</span></dt>
+        <dd>
+            <span>{{vm.wirelessSensorNetwork.cost}}</span>
+        </dd>
+        <dt><span>Security</span></dt>
+        <dd>
+            <span>{{vm.wirelessSensorNetwork.security}}</span>
+        </dd>
+        <dt><span>Self Organisation Of Nodes</span></dt>
+        <dd>
+            <span>{{vm.wirelessSensorNetwork.selfOrganisationOfNodes}}</span>
+        </dd>
+        <dt><span>Mobility</span></dt>
+        <dd>
+            <span>{{vm.wirelessSensorNetwork.mobility}}</span>
+        </dd>
+        <dt><span>Oem Name</span></dt>
+        <dd>
+            <a ui-sref="company-detail({id:vm.wirelessSensorNetwork.oemName.id})">{{vm.wirelessSensorNetwork.oemName.name}}</a>
+        </dd>
+        <dt><span>Added By</span></dt>
+        <dd>
+            {{vm.wirelessSensorNetwork.addedBy.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="wireless-sensor-network-detail.edit({id:vm.wirelessSensorNetwork.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity StopSupportingTool.
+    -->
+    <changeSet id="20170720132454-1" author="jhipster">
+        <createTable tableName="stop_supporing_tool">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="model" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="technology_type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="trl" type="integer">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="photo" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="photo_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="datasheet" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="datasheet_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="type_of_machine" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_type_of_machine" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="weight" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_weight" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="length" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_length" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="width" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_width" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="hole_size" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_hole_size" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="drill_water_consumption" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_drill_water_consumption" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="cycle_time_bolting" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_cycle_time_bolting" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="water_consumption_per_metre_drilled" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_water_consumption_per_metre_drilled" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="power_source" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_power_source" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="tramming_speed" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_tramming_speed" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="bolt_length_range" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_bolt_length_range" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="drill_speed" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_drill_speed" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="gradeability" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_gradeability" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="number_of_booms" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_number_of_booms" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="type_of_boom" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_type_of_boom" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="outer_turning_radius" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_outer_turning_radius" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="inner_turning_radius" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_inner_turning_radius" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="observations_1" type="clob">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_observations_1" type="clob">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="observations_2" type="clob">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_observations_2" type="clob">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="observations_3" type="clob">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_observations_3" type="clob">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="observations_4" type="clob">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_observations_4" type="clob">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="observations_5" type="clob">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_observations_5" type="clob">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="observations_6" type="clob">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_observations_6" type="clob">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="operators_comments" type="clob">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="tested_operators_comments" type="clob">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="oem_name_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="added_by_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

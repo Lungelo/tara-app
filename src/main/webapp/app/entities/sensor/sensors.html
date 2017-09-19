@@ -1,0 +1,132 @@
+<div>
+<h4 class="tool-header" title="Real Time Information Management System">RTIMS INFRASTRUCTURE: SMART MODULE</h4>
+    <h4>SENSOR</h4>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="sensor.new" has-any-authority="ROLE_ADMIN, ROLE_USER">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs-down" >
+                        Add New Sensor
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="Enter Keyword">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive box-shadow--8dp">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="technologyType"><span>Technology Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="trl"><span>TRL</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="photo"><span>Photo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="datasheet"><span>Datasheet</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!-- <th jh-sort-by="sensitivity"><span>Sensitivity</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="stability"><span>Stability</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="accuracy"><span>Accuracy</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="hysteresis"><span>Hysteresis</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="drift"><span>Drift</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cost"><span>Cost</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="size"><span>Size</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="weight"><span>Weight</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="rangeSpan"><span>Range Span</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="resolution"><span>Resolution</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="linearity"><span>Linearity</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="responseTime"><span>Response Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="precision"><span>Precision</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="signalToNoiseRatio"><span>Signal To Noise Ratio</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="temperature"><span>Temperature</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="oemName.name"><span>OEM Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+<!--                     <th jh-sort-by="addedBy.login"><span>Added By</span> <span class="glyphicon glyphicon-sort"></span></th>
+ -->                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="sensor in vm.sensors track by sensor.id">
+                    <td><a ui-sref="sensor-detail({id:sensor.id})">{{sensor.id}}</a></td>
+                    <td>{{sensor.name}}</td>
+                    <td>{{sensor.technologyType}}</td>
+                    <td>{{sensor.trl}}</td>
+                    <td>
+                        <a ng-if="sensor.photo" ng-click="vm.openFile(sensor.photoContentType, sensor.photo)">
+                            <img data-ng-src="{{'data:' + sensor.photoContentType + ';base64,' + sensor.photo}}" style="max-height: 30px;" alt="sensor image"/>
+                        </a>
+                        <span ng-if="sensor.photo"></span>
+                    </td>
+                    <td>
+                        <a ng-if="sensor.datasheet" ng-click="vm.openFile(sensor.datasheetContentType, sensor.datasheet)">View/Download</a>
+                        <span ng-if="sensor.datasheet"></span>
+                    </td>
+                    <!-- <td>{{sensor.sensitivity}}</td>
+                    <td>{{sensor.stability}}</td>
+                    <td>{{sensor.accuracy}}</td>
+                    <td>{{sensor.hysteresis}}</td>
+                    <td>{{sensor.drift}}</td>
+                    <td>{{sensor.cost}}</td>
+                    <td>{{sensor.size}}</td>
+                    <td>{{sensor.weight}}</td>
+                    <td>{{sensor.rangeSpan}}</td>
+                    <td>{{sensor.resolution}}</td>
+                    <td>{{sensor.linearity}}</td>
+                    <td>{{sensor.responseTime}}</td>
+                    <td>{{sensor.precision}}</td>
+                    <td>{{sensor.signalToNoiseRatio}}</td>
+                    <td>{{sensor.temperature}}</td> -->
+                    <td>
+                        <a ui-sref="company-detail({id:sensor.oemName.id})">{{sensor.oemName.name}}</a>
+                    </td>
+                    <!-- <td>
+                        {{sensor.addedBy.login}}
+                    </td> -->
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="sensor-detail({id:sensor.id})"
+                                    class="btn btn-info btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER , GENERAL_USER" >
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="sensor.edit({id:sensor.id})"
+                                    class="btn btn-primary btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER" >
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="sensor.delete({id:sensor.id})"
+                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER" >
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

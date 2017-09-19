@@ -1,0 +1,439 @@
+{
+	"fluentMethods": true,
+	"relationships": [{
+			"relationshipName": "oemName",
+			"otherEntityName": "company",
+			"relationshipType": "many-to-one",
+			"otherEntityField": "name"
+		},
+		{
+			"relationshipName": "addedBy",
+			"otherEntityName": "user",
+			"relationshipType": "many-to-one",
+			"otherEntityField": "login",
+			"ownerSide": true,
+			"otherEntityRelationshipName": "devChargingTool"
+		}
+	],
+	"fields": [{
+			"fieldName": "name",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required",
+				"minlength"
+			],
+			"fieldValidateRulesMinlength": "3"
+		},
+		{
+			"fieldName": "model",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required",
+				"minlength"
+			],
+			"fieldValidateRulesMinlength": "3"
+		},
+		{
+			"fieldName": "technologyType",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required",
+				"minlength"
+			],
+			"fieldValidateRulesMinlength": "3"
+		},
+		{
+			"fieldName": "trl",
+			"fieldType": "Integer",
+			"fieldValidateRules": [
+				"required",
+				"min",
+				"max"
+			],
+			"fieldValidateRulesMin": "1",
+			"fieldValidateRulesMax": "9"
+		},
+		{
+			"fieldName": "photo",
+			"fieldType": "byte[]",
+			"fieldTypeBlobContent": "image",
+			"fieldValidateRules": []
+		},
+		{
+			"fieldName": "datasheet",
+			"fieldType": "byte[]",
+			"fieldTypeBlobContent": "any"
+		},
+		{
+			"fieldName": "hoseLength",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "testedHoseLength",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+
+			]
+		},
+		{
+			"fieldName": "holeDiameter",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "testedHoleDiameter",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+
+			]
+		},
+		{
+			"fieldName": "explosiveType",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "tesdedExplosiveType",
+			"fieldType": "String",
+			"fieldValidateRules": [
+
+			]
+		},
+		{
+			"fieldName": "tankCapacity",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "testedTankCapacity",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+
+			]
+		},
+		{
+			"fieldName": "height",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "testedHeight",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+
+			]
+		},
+		{
+			"fieldName": "weight",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "testedWeight",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+
+			]
+		},
+		{
+			"fieldName": "length",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "testedLength",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+
+			]
+		},
+		{
+			"fieldName": "rpmOutput",
+			"fieldType": "Float"
+		},
+		{
+			"fieldName": "testedRpmOutput",
+			"fieldType": "Float"
+		},
+		{
+			"fieldName": "torque",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "testedTorque",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+
+			]
+		},
+		{
+			"fieldName": "tankRange",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "testedTankRange",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "fuelConsumption",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "testedFuelConsumption",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+
+			]
+		},
+		{
+			"fieldName": "availability",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+				"required",
+				"min",
+				"max"
+			],
+			"fieldValidateRulesMin": "1",
+			"fieldValidateRulesMax": "100"
+		},
+		{
+			"fieldName": "testedAvailability",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+
+				"min",
+				"max"
+			],
+			"fieldValidateRulesMin": "1",
+			"fieldValidateRulesMax": "100"
+		},
+		{
+			"fieldName": "operatingCostPerTonne",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "testedOperatingCostPerTonne",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+
+			]
+		},
+		{
+			"fieldName": "fuelConsumptionPerExplosiveKgCharged",
+			"fieldType": "Float"
+		},
+		{
+			"fieldName": "testedFuelConsumptionPerExplosiveKgCharged",
+			"fieldType": "Float"
+		},
+		{
+			"fieldName": "controlSystem",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "testedControlSystem",
+			"fieldType": "String",
+			"fieldValidateRules": [
+
+			]
+		},
+		{
+			"fieldName": "cycleTime",
+			"fieldType": "Float"
+		},
+		{
+			"fieldName": "testedCycleTime",
+			"fieldType": "Float"
+		},
+		{
+			"fieldName": "turningRadiusInner",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "testedTurningRadiusInner",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+
+			]
+		},
+		{
+			"fieldName": "turningRadiusOuter",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "testedTurningRadiusOuter",
+			"fieldType": "Float",
+			"fieldValidateRules": [
+
+			]
+		},
+		{
+			"fieldName": "lubricationType",
+			"fieldType": "LubricationType",
+			"fieldValues": "OIL_BASED, WATER_BASED",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "testedLubricationType",
+			"fieldType": "LubricationType",
+			"fieldValues": "OIL_BASED, WATER_BASED",
+			"fieldValidateRules": [
+
+			]
+		},
+		{
+			"fieldName": "temperatureAtAmbient",
+			"fieldType": "Float"
+		},
+		{
+			"fieldName": "testedTemperatureAtAmbient",
+			"fieldType": "Float"
+		}, {
+			"fieldName": "observations1",
+			"fieldType": "byte[]",
+			"fieldTypeBlobContent": "text",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "testedObservations1",
+			"fieldType": "byte[]",
+			"fieldTypeBlobContent": "text",
+			"fieldValidateRules": [
+
+			]
+		},
+		{
+			"fieldName": "observations2",
+			"fieldType": "byte[]",
+			"fieldTypeBlobContent": "text",
+			"fieldValidateRules": [
+				"required"
+			]
+		}, {
+			"fieldName": "testedObservations2",
+			"fieldType": "byte[]",
+			"fieldTypeBlobContent": "text",
+			"fieldValidateRules": [
+
+			]
+		},
+		{
+			"fieldName": "observations3",
+			"fieldType": "byte[]",
+			"fieldTypeBlobContent": "text",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "testedObservations3",
+			"fieldType": "byte[]",
+			"fieldTypeBlobContent": "text",
+			"fieldValidateRules": [
+
+			]
+		}, {
+			"fieldName": "observations4",
+			"fieldType": "byte[]",
+			"fieldTypeBlobContent": "text",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "testedObservations4",
+			"fieldType": "byte[]",
+			"fieldTypeBlobContent": "text",
+			"fieldValidateRules": [
+
+			]
+		}, {
+			"fieldName": "observations5",
+			"fieldType": "byte[]",
+			"fieldTypeBlobContent": "text",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "testedObservations5",
+			"fieldType": "byte[]",
+			"fieldTypeBlobContent": "text",
+			"fieldValidateRules": [
+
+			]
+		}, {
+			"fieldName": "observations6",
+			"fieldType": "byte[]",
+			"fieldTypeBlobContent": "text",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "testedObservations6",
+			"fieldType": "byte[]",
+			"fieldTypeBlobContent": "text",
+			"fieldValidateRules": [
+
+			]
+		}, {
+			"fieldName": "operators_Comments",
+			"fieldType": "byte[]",
+			"fieldTypeBlobContent": "text",
+			"fieldValidateRules": [
+				"required"
+			]
+		}, {
+			"fieldName": "testedOperators_Comments",
+			"fieldType": "byte[]",
+			"fieldTypeBlobContent": "text",
+			"fieldValidateRules": [
+
+			]
+		}
+
+	],
+	"changelogDate": "20170720132449",
+	"dto": "no",
+	"service": "no",
+	"entityTableName": "dev_charging_tool",
+	"pagination": "pagination"
+}

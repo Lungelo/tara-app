@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity WirelessSensorNetwork.
+    -->
+    <changeSet id="20170720132457-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="oem_name_id"
+                                 baseTableName="wireless_sensor_network"
+                                 constraintName="fk_wireless_sensor_network_oem_name_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="company"/>
+
+        <addForeignKeyConstraint baseColumnNames="added_by_id"
+                                 baseTableName="wireless_sensor_network"
+                                 constraintName="fk_wireless_sensor_network_added_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+    </changeSet>
+</databaseChangeLog>

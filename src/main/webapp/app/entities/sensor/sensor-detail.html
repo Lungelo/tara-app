@@ -1,0 +1,115 @@
+
+<div>
+    <h2><span>Sensor</span> {{vm.sensor.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.sensor.name}}</span>
+        </dd>
+        <dt><span>Technology Type</span></dt>
+        <dd>
+            <span>{{vm.sensor.technologyType}}</span>
+        </dd>
+        <dt><span>Trl</span></dt>
+        <dd>
+            <span>{{vm.sensor.trl}}</span>
+        </dd>
+        <dt><span>Photo</span></dt>
+        <dd>
+            <div ng-if="vm.sensor.photo">
+                <a ng-click="vm.openFile(vm.sensor.photoContentType, vm.sensor.photo)">
+                    <img data-ng-src="{{'data:' + vm.sensor.photoContentType + ';base64,' + vm.sensor.photo}}" style="max-width: 100%;" alt="sensor image"/>
+                </a>
+                
+            </div>
+        </dd>
+        <dt><span>Datasheet</span></dt>
+        <dd>
+            <div ng-if="vm.sensor.datasheet">
+                <a ng-click="vm.openFile(vm.sensor.datasheetContentType, vm.sensor.datasheet)">View/Download</a>
+                
+            </div>
+        </dd>
+        <dt><span>Sensitivity</span></dt>
+        <dd>
+            <span>{{vm.sensor.sensitivity}}</span>
+        </dd>
+        <dt><span>Stability</span></dt>
+        <dd>
+            <span>{{vm.sensor.stability}}</span>
+        </dd>
+        <dt><span>Accuracy</span></dt>
+        <dd>
+            <span>{{vm.sensor.accuracy}}</span>
+        </dd>
+        <dt><span>Hysteresis</span></dt>
+        <dd>
+            <span>{{vm.sensor.hysteresis}}</span>
+        </dd>
+        <dt><span>Drift</span></dt>
+        <dd>
+            <span>{{vm.sensor.drift}}</span>
+        </dd>
+        <dt><span>Cost</span></dt>
+        <dd>
+            <span>{{vm.sensor.cost}}</span>
+        </dd>
+        <dt><span>Size</span></dt>
+        <dd>
+            <span>{{vm.sensor.size}}</span>
+        </dd>
+        <dt><span>Weight</span></dt>
+        <dd>
+            <span>{{vm.sensor.weight}}</span>
+        </dd>
+        <dt><span>Range Span</span></dt>
+        <dd>
+            <span>{{vm.sensor.rangeSpan}}</span>
+        </dd>
+        <dt><span>Resolution</span></dt>
+        <dd>
+            <span>{{vm.sensor.resolution}}</span>
+        </dd>
+        <dt><span>Linearity</span></dt>
+        <dd>
+            <span>{{vm.sensor.linearity}}</span>
+        </dd>
+        <dt><span>Response Time</span></dt>
+        <dd>
+            <span>{{vm.sensor.responseTime}}</span>
+        </dd>
+        <dt><span>Precision</span></dt>
+        <dd>
+            <span>{{vm.sensor.precision}}</span>
+        </dd>
+        <dt><span>Signal To Noise Ratio</span></dt>
+        <dd>
+            <span>{{vm.sensor.signalToNoiseRatio}}</span>
+        </dd>
+        <dt><span>Temperature</span></dt>
+        <dd>
+            <span>{{vm.sensor.temperature}}</span>
+        </dd>
+        <dt><span>Oem Name</span></dt>
+        <dd>
+            <a ui-sref="company-detail({id:vm.sensor.oemName.id})">{{vm.sensor.oemName.name}}</a>
+        </dd>
+        <dt><span>Added By</span></dt>
+        <dd>
+            {{vm.sensor.addedBy.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="sensor-detail.edit({id:vm.sensor.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

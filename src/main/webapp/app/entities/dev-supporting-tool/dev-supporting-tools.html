@@ -1,0 +1,208 @@
+<div>
+    <h4 class="tool-header">ACTIVITY AREA: DEVELOPMENT</h4>
+    <h4>SUPPORTING TOOLS</h4>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="dev-supporting-tool.new" has-any-authority="ROLE_ADMIN, ROLE_USER" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs-down" >
+                        Add New Tool
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="Enter Keyword">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="model"><span>Model</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="technologyType"><span>Technology Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="trl"><span>TRL</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="photo"><span>Photo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="datasheet"><span>Datasheet</span> <span class="glyphicon glyphicon-sort"></span></th>
+                   <!--  <th jh-sort-by="typeOfMachine"><span>Type Of Machine</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedTypeOfMachine"><span>Tested Type Of Machine</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="weight"><span>Weight</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedWeight"><span>Tested Weight</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="length"><span>Length</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedLength"><span>Tested Length</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="width"><span>Width</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedWidth"><span>Tested Width</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="powerRatingPercussion"><span>Power Rating Percussion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedPowerRatingPercussion"><span>Tested Power Rating Percussion</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="noiseLevelAtOperatorStand"><span>Noise Level At Operator Stand</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedNoiseLevelAtOperatorStand"><span>Tested Noise Level At Operator Stand</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="holeSizeRange"><span>Hole Size Range</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedHoleSizeRange"><span>Tested Hole Size Range</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="drillWaterConsumption"><span>Drill Water Consumption</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedDrillWaterConsumption"><span>Tested Drill Water Consumption</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="waterConsumptionPerMetreDrilled"><span>Water Consumption Per Metre Drilled</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedWaterConsumptionPerMetreDrilled"><span>Tested Water Consumption Per Metre Drilled</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="powerSource"><span>Power Source</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedPowerSource"><span>Tested Power Source</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="trammingSpeed"><span>Tramming Speed</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedTrammingSpeed"><span>Tested Tramming Speed</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="boltLengthRange"><span>Bolt Length Range</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedBoltLengthRange"><span>Tested Bolt Length Range</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="minimumOperatingHeight"><span>Minimum Operating Height</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedMinimumOperatingHeight"><span>Tested Minimum Operating Height</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="drillSpeed"><span>Drill Speed</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedDrillSpeed"><span>Tested Drill Speed</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="gradeability"><span>Gradeability</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedGradeability"><span>Tested Gradeability</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="numberOfBooms"><span>Number Of Booms</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedNumberOfBooms"><span>Tested Number Of Booms</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="typeOfBoom"><span>Type Of Boom</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedTypeOfBoom"><span>Tested Type Of Boom</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="outerTurningRadius"><span>Outer Turning Radius</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedOuterTurningRadius"><span>Tested Outer Turning Radius</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="nnerTurningRadius"><span>Nner Turning Radius</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedInnerTurningRadius"><span>Tested Inner Turning Radius</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations1"><span>Observations 1</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations1"><span>Tested Observations 1</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations2"><span>Observations 2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations2"><span>Tested Observations 2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations3"><span>Observations 3</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations3"><span>Tested Observations 3</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations4"><span>Observations 4</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations4"><span>Tested Observations 4</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations5"><span>Observations 5</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations5"><span>Tested Observations 5</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations6"><span>Observations 6</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations6"><span>Tested Observations 6</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="operators_Comments"><span>Operators Comments</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedOperators_Comments"><span>Tested Operators Comments</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="oemName.name"><span>OEM Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+<!--                     <th jh-sort-by="addedBy.login"><span>Added By</span> <span class="glyphicon glyphicon-sort"></span></th>
+ -->                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="devSupportingTool in vm.devSupportingTools track by devSupportingTool.id">
+                    <td><a ui-sref="dev-supporting-tool-detail({id:devSupportingTool.id})">{{devSupportingTool.id}}</a></td>
+                    <td>{{devSupportingTool.name}}</td>
+                    <td>{{devSupportingTool.model}}</td>
+                    <td>{{devSupportingTool.technologyType}}</td>
+                    <td>{{devSupportingTool.trl}}</td>
+                    <td>
+                        <a ng-if="devSupportingTool.photo" ng-click="vm.openFile(devSupportingTool.photoContentType, devSupportingTool.photo)">
+                            <img data-ng-src="{{'data:' + devSupportingTool.photoContentType + ';base64,' + devSupportingTool.photo}}" style="max-height: 30px;" alt="devSupportingTool image"/>
+                        </a>
+                        <span ng-if="devSupportingTool.photo"></span>
+                    </td>
+                    <td>
+                        <a ng-if="devSupportingTool.datasheet" ng-click="vm.openFile(devSupportingTool.datasheetContentType, devSupportingTool.datasheet)">View/Download</a>
+                        <span ng-if="devSupportingTool.datasheet"></span>
+                    </td>
+                    <!-- <td>{{devSupportingTool.typeOfMachine}}</td>
+                    <td>{{devSupportingTool.testedTypeOfMachine}}</td>
+                    <td>{{devSupportingTool.weight}}</td>
+                    <td>{{devSupportingTool.testedWeight}}</td>
+                    <td>{{devSupportingTool.length}}</td>
+                    <td>{{devSupportingTool.testedLength}}</td>
+                    <td>{{devSupportingTool.width}}</td>
+                    <td>{{devSupportingTool.testedWidth}}</td>
+                    <td>{{devSupportingTool.powerRatingPercussion}}</td>
+                    <td>{{devSupportingTool.testedPowerRatingPercussion}}</td>
+                    <td>{{devSupportingTool.noiseLevelAtOperatorStand}}</td>
+                    <td>{{devSupportingTool.testedNoiseLevelAtOperatorStand}}</td>
+                    <td>{{devSupportingTool.holeSizeRange}}</td>
+                    <td>{{devSupportingTool.testedHoleSizeRange}}</td>
+                    <td>{{devSupportingTool.drillWaterConsumption}}</td>
+                    <td>{{devSupportingTool.testedDrillWaterConsumption}}</td>
+                    <td>{{devSupportingTool.waterConsumptionPerMetreDrilled}}</td>
+                    <td>{{devSupportingTool.testedWaterConsumptionPerMetreDrilled}}</td>
+                    <td>{{devSupportingTool.powerSource}}</td>
+                    <td>{{devSupportingTool.testedPowerSource}}</td>
+                    <td>{{devSupportingTool.trammingSpeed}}</td>
+                    <td>{{devSupportingTool.testedTrammingSpeed}}</td>
+                    <td>{{devSupportingTool.boltLengthRange}}</td>
+                    <td>{{devSupportingTool.testedBoltLengthRange}}</td>
+                    <td>{{devSupportingTool.minimumOperatingHeight}}</td>
+                    <td>{{devSupportingTool.testedMinimumOperatingHeight}}</td>
+                    <td>{{devSupportingTool.drillSpeed}}</td>
+                    <td>{{devSupportingTool.testedDrillSpeed}}</td>
+                    <td>{{devSupportingTool.gradeability}}</td>
+                    <td>{{devSupportingTool.testedGradeability}}</td>
+                    <td>{{devSupportingTool.numberOfBooms}}</td>
+                    <td>{{devSupportingTool.testedNumberOfBooms}}</td>
+                    <td>{{devSupportingTool.typeOfBoom}}</td>
+                    <td>{{devSupportingTool.testedTypeOfBoom}}</td>
+                    <td>{{devSupportingTool.outerTurningRadius}}</td>
+                    <td>{{devSupportingTool.testedOuterTurningRadius}}</td>
+                    <td>{{devSupportingTool.nnerTurningRadius}}</td>
+                    <td>{{devSupportingTool.testedInnerTurningRadius}}</td>
+                    <td>{{devSupportingTool.observations1}}</td>
+                    <td>{{devSupportingTool.testedObservations1}}</td>
+                    <td>{{devSupportingTool.observations2}}</td>
+                    <td>{{devSupportingTool.testedObservations2}}</td>
+                    <td>{{devSupportingTool.observations3}}</td>
+                    <td>{{devSupportingTool.testedObservations3}}</td>
+                    <td>{{devSupportingTool.observations4}}</td>
+                    <td>{{devSupportingTool.testedObservations4}}</td>
+                    <td>{{devSupportingTool.observations5}}</td>
+                    <td>{{devSupportingTool.testedObservations5}}</td>
+                    <td>{{devSupportingTool.observations6}}</td>
+                    <td>{{devSupportingTool.testedObservations6}}</td>
+                    <td>{{devSupportingTool.operators_Comments}}</td>
+                    <td>{{devSupportingTool.testedOperators_Comments}}</td> -->
+                    <td>
+                        <a ui-sref="company-detail({id:devSupportingTool.oemName.id})">{{devSupportingTool.oemName.name}}</a>
+                    </td>
+                    <!-- <td>
+                        {{devSupportingTool.addedBy.login}}
+                    </td> -->
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="dev-supporting-tool-detail({id:devSupportingTool.id})"
+                                    class="btn btn-info btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER, GENERAL_USER">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="dev-supporting-tool.edit({id:devSupportingTool.id})"
+                                    class="btn btn-primary btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="dev-supporting-tool.delete({id:devSupportingTool.id})"
+                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

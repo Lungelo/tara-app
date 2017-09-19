@@ -1,0 +1,213 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "oemName",
+            "otherEntityName": "company",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+            ],
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "addedBy",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+            ],
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "positioningSystem"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "3"
+        },
+        {
+            "fieldName": "technologyType",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "3"
+        },
+        {
+            "fieldName": "trl",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "1",
+            "fieldValidateRulesMax": "9"
+        },
+        {
+            "fieldName": "photo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "datasheet",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+		
+		{
+            "fieldName": "accuracy",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "coverageArea",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		
+		{
+            "fieldName": "cost",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "requiredInfrastructure",
+            "fieldType": "String"
+        },
+		
+		{
+            "fieldName": "marketMaturity",
+            "fieldType": "MarketMaturity",
+            "fieldValues": "CONCEPT, DEVELOPMENT, PRODUCT",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "outputData",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "privacy",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		
+		{
+            "fieldName": "updateRate",
+            "fieldType": "Float"
+        },
+		
+		{
+            "fieldName": "systemLatency",
+            "fieldType": "String"
+        },
+		
+		{
+            "fieldName": "_interface",
+            "fieldType": "String"
+        },
+		{
+            "fieldName": "systemIntegrity",
+            "fieldType": "String"
+        },
+		{
+            "fieldName": "robustness",
+            "fieldType": "String"
+        },
+		
+		{
+            "fieldName": "availability",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "1",
+            "fieldValidateRulesMax": "100"
+        },
+		
+		{
+            "fieldName": "continuity",
+            "fieldType": "Float"
+        },
+		{
+            "fieldName": "scalability",
+            "fieldType": "String"
+        },
+		{
+            "fieldName": "numberOfUsers",
+            "fieldType": "String"
+        },
+		{
+            "fieldName": "approval",
+            "fieldType": "String"
+        },
+		{
+            "fieldName": "levelOfHybridisation",
+            "fieldType": "String"
+        },
+		{
+            "fieldName": "technology",
+            "fieldType": "String"
+        },
+		{
+            "fieldName": "measuredQuantity",
+            "fieldType": "String"
+        },
+		{
+            "fieldName": "basicMeasuringPrinciple",
+            "fieldType": "String"
+        },
+		{
+            "fieldName": "positionAlgorithm",
+            "fieldType": "String"
+        },
+		{
+            "fieldName": "signaltype",
+            "fieldType": "String"
+        },
+		{
+            "fieldName": "signalWavelength",
+            "fieldType": "String"
+        },
+		{
+            "fieldName": "systemArchitecture",
+            "fieldType": "String"
+        },
+		{
+            "fieldName": "application",
+            "fieldType": "String"
+        },
+		{
+            "fieldName": "coordinateReference",
+            "fieldType": "String"
+        }
+		
+    ],
+    "changelogDate": "20170720132458",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "positioning_system",
+    "pagination": "pagination"
+}

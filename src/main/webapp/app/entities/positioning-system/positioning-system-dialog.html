@@ -1,0 +1,379 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPositioningSystemLabel">Create or edit a Positioning System</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.positioningSystem.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.positioningSystem.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.positioningSystem.name"
+                    required ng-minlength="3"/>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_technologyType">Technology Type</label>
+            <input type="text" class="form-control" name="technologyType" id="field_technologyType"
+                    ng-model="vm.positioningSystem.technologyType"
+                    required ng-minlength="3"/>
+            <div ng-show="editForm.technologyType.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.technologyType.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.technologyType.$error.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_trl">TRL</label>
+            <input type="number" class="form-control" name="trl" id="field_trl"
+                    ng-model="vm.positioningSystem.trl"
+                    required min="1" max="9"/>
+            <div ng-show="editForm.trl.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.trl.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.trl.$error.min" translate-value-min="1">
+                    This field should be at least 1.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.trl.$error.max">
+                    This field cannot be more than 9.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.trl.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setPhoto($file, vm.positioningSystem)" ngf-pattern="'image/*'">
+            <label class="control-label" for="field_photo">Photo</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.positioningSystem.photoContentType + ';base64,' + vm.positioningSystem.photo}}" style="max-height: 100px;" ng-if="vm.positioningSystem.photo" alt="positioningSystem image"/>
+                <div ng-if="vm.positioningSystem.photo" class="help-block clearfix">
+                    <span class="pull-left">{{vm.positioningSystem.photoContentType}}, {{vm.byteSize(vm.positioningSystem.photo)}}</span>
+                    <button type="button" ng-click="vm.positioningSystem.photo=null;vm.positioningSystem.photoContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setPhoto($file, vm.positioningSystem)" accept="image/*">
+                     <i class="glyphicon glyphicon-open"></i>  Browse
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="photo" id="field_photo"
+                    ng-model="vm.positioningSystem.photo"
+                    />
+            <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
+                    ng-model="vm.positioningSystem.photoContentType" />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setDatasheet($file, vm.positioningSystem)">
+            <label class="control-label" for="field_datasheet">Datasheet</label>
+            <div>
+                <div ng-if="vm.positioningSystem.datasheet" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.positioningSystem.datasheetContentType, vm.positioningSystem.datasheet)">open</a><br>
+                    <span class="pull-left">{{vm.positioningSystem.datasheetContentType}}, {{vm.byteSize(vm.positioningSystem.datasheet)}}</span>
+                    <button type="button" ng-click="vm.positioningSystem.datasheet=null;vm.positioningSystem.datasheetContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setDatasheet($file, vm.positioningSystem)">
+                     <i class="glyphicon glyphicon-open"></i>  Browse
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="datasheet" id="field_datasheet"
+                    ng-model="vm.positioningSystem.datasheet"
+                    />
+            <input type="hidden" class="form-control" name="datasheetContentType" id="field_datasheetContentType"
+                    ng-model="vm.positioningSystem.datasheetContentType" />
+        </div>
+        </br>
+        <div class="form-group  text-center">
+            <label style="padding: 6px 12px;
+    text-transform: uppercase;
+    border: 1px solid #003667;
+    color: #003667;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 0;
+    background-color: transparent;" >Specification</label>
+            
+        </div>
+        <hr></hr>
+        
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_accuracy">Accuracy</label>
+            <input type="number" class="form-control" name="accuracy" id="field_accuracy"
+                    ng-model="vm.positioningSystem.accuracy"
+                    required/>
+            <div ng-show="editForm.accuracy.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.accuracy.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.accuracy.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_coverageArea">Coverage Area</label>
+            <input type="text" class="form-control" name="coverageArea" id="field_coverageArea"
+                    ng-model="vm.positioningSystem.coverageArea"
+                    required/>
+            <div ng-show="editForm.coverageArea.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.coverageArea.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_cost">Cost</label>
+            <input type="number" class="form-control" name="cost" id="field_cost"
+                    ng-model="vm.positioningSystem.cost"
+                    required/>
+            <div ng-show="editForm.cost.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.cost.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.cost.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_requiredInfrastructure">Required Infrastructure</label>
+            <input type="text" class="form-control" name="requiredInfrastructure" id="field_requiredInfrastructure"
+                    ng-model="vm.positioningSystem.requiredInfrastructure"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_marketMaturity">Market Maturity</label>
+            <select class="form-control" name="marketMaturity" ng-model="vm.positioningSystem.marketMaturity" id="field_marketMaturity" required>
+                <option value="CONCEPT">CONCEPT</option>
+                <option value="DEVELOPMENT">DEVELOPMENT</option>
+                <option value="PRODUCT">PRODUCT</option>
+            </select>
+            <div ng-show="editForm.marketMaturity.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.marketMaturity.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_outputData">Output Data</label>
+            <input type="text" class="form-control" name="outputData" id="field_outputData"
+                    ng-model="vm.positioningSystem.outputData"
+                    required/>
+            <div ng-show="editForm.outputData.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.outputData.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_privacy">Privacy</label>
+            <input type="text" class="form-control" name="privacy" id="field_privacy"
+                    ng-model="vm.positioningSystem.privacy"
+                    required/>
+            <div ng-show="editForm.privacy.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.privacy.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_updateRate">Update Rate</label>
+            <input type="number" class="form-control" name="updateRate" id="field_updateRate"
+                    ng-model="vm.positioningSystem.updateRate"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_systemLatency">System Latency</label>
+            <input type="text" class="form-control" name="systemLatency" id="field_systemLatency"
+                    ng-model="vm.positioningSystem.systemLatency"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field__interface">Interface</label>
+            <input type="text" class="form-control" name="_interface" id="field__interface"
+                    ng-model="vm.positioningSystem._interface"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_systemIntegrity">System Integrity</label>
+            <input type="text" class="form-control" name="systemIntegrity" id="field_systemIntegrity"
+                    ng-model="vm.positioningSystem.systemIntegrity"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_robustness">Robustness</label>
+            <input type="text" class="form-control" name="robustness" id="field_robustness"
+                    ng-model="vm.positioningSystem.robustness"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_availability">Availability</label>
+            <input type="number" class="form-control" name="availability" id="field_availability"
+                    ng-model="vm.positioningSystem.availability"
+                    required min="1" max="100"/>
+            <div ng-show="editForm.availability.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.availability.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.availability.$error.min" translate-value-min="1">
+                    This field should be at least 1.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.availability.$error.max">
+                    This field cannot be more than 100.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.availability.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_continuity">Continuity</label>
+            <input type="number" class="form-control" name="continuity" id="field_continuity"
+                    ng-model="vm.positioningSystem.continuity"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_scalability">Scalability</label>
+            <input type="text" class="form-control" name="scalability" id="field_scalability"
+                    ng-model="vm.positioningSystem.scalability"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_numberOfUsers">Number Of Users</label>
+            <input type="text" class="form-control" name="numberOfUsers" id="field_numberOfUsers"
+                    ng-model="vm.positioningSystem.numberOfUsers"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_approval">Approval</label>
+            <input type="text" class="form-control" name="approval" id="field_approval"
+                    ng-model="vm.positioningSystem.approval"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_levelOfHybridisation">Level Of Hybridisation</label>
+            <input type="text" class="form-control" name="levelOfHybridisation" id="field_levelOfHybridisation"
+                    ng-model="vm.positioningSystem.levelOfHybridisation"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_technology">Technology</label>
+            <input type="text" class="form-control" name="technology" id="field_technology"
+                    ng-model="vm.positioningSystem.technology"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_measuredQuantity">Measured Quantity</label>
+            <input type="text" class="form-control" name="measuredQuantity" id="field_measuredQuantity"
+                    ng-model="vm.positioningSystem.measuredQuantity"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_basicMeasuringPrinciple">Basic Measuring Principle</label>
+            <input type="text" class="form-control" name="basicMeasuringPrinciple" id="field_basicMeasuringPrinciple"
+                    ng-model="vm.positioningSystem.basicMeasuringPrinciple"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_positionAlgorithm">Position Algorithm</label>
+            <input type="text" class="form-control" name="positionAlgorithm" id="field_positionAlgorithm"
+                    ng-model="vm.positioningSystem.positionAlgorithm"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_signaltype">Signaltype</label>
+            <input type="text" class="form-control" name="signaltype" id="field_signaltype"
+                    ng-model="vm.positioningSystem.signaltype"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_signalWavelength">Signal Wavelength</label>
+            <input type="text" class="form-control" name="signalWavelength" id="field_signalWavelength"
+                    ng-model="vm.positioningSystem.signalWavelength"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_systemArchitecture">System Architecture</label>
+            <input type="text" class="form-control" name="systemArchitecture" id="field_systemArchitecture"
+                    ng-model="vm.positioningSystem.systemArchitecture"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_application">Application</label>
+            <input type="text" class="form-control" name="application" id="field_application"
+                    ng-model="vm.positioningSystem.application"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_coordinateReference">Coordinate Reference</label>
+            <input type="text" class="form-control" name="coordinateReference" id="field_coordinateReference"
+                    ng-model="vm.positioningSystem.coordinateReference"
+                    />
+        </div>
+
+        <div class="form-group col-xs-6 hide-content">
+            <label for="field_oemName">Oem Name</label>
+            <select class="form-control" id="field_oemName" name="oemName" ng-model="vm.positioningSystem.oemName" ng-options="company as company.name for company in vm.companies track by company.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group col-xs-6 hide-content">
+            <label for="field_addedBy">Added By</label>
+            <select class="form-control" id="field_addedBy" name="addedBy" ng-model="vm.positioningSystem.addedBy" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

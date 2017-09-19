@@ -1,0 +1,250 @@
+
+<div>
+    <h2><span>Supporting Tool</span> {{vm.stopSupportingTool.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.name}}</span>
+        </dd>
+        <dt><span>Model</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.model}}</span>
+        </dd>
+        <dt><span>Technology Type</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.technologyType}}</span>
+        </dd>
+        <dt><span>TRL</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.trl}}</span>
+        </dd>
+        <dt><span>Photo</span></dt>
+        <dd>
+            <div ng-if="vm.stopSupportingTool.photo">
+                <a ng-click="vm.openFile(vm.stopSupportingTool.photoContentType, vm.stopSupportingTool.photo)">
+                    <img data-ng-src="{{'data:' + vm.stopSupportingTool.photoContentType + ';base64,' + vm.stopSupportingTool.photo}}" style="max-width: 100%;" alt="stopSupportingTool image"/>
+                </a>
+                
+            </div>
+        </dd>
+        <dt><span>Datasheet</span></dt>
+        <dd>
+            <div ng-if="vm.stopSupportingTool.datasheet">
+                <a ng-click="vm.openFile(vm.stopSupportingTool.datasheetContentType, vm.stopSupportingTool.datasheet)">View/Download</a>
+            </div>
+        </dd>
+        <dt><span>Type Of Machine</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.typeOfMachine}}</span>
+        </dd>
+        <dt><span>Tested Type Of Machine</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedTypeOfMachine}}</span>
+        </dd>
+        <dt><span>Weight</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.weight}}kg</span>
+        </dd>
+        <dt><span>Tested Weight</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedWeight}}</span>
+        </dd>
+        <dt><span>Length</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.length}}mm</span>
+        </dd>
+        <dt><span>Tested Length</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedLength}}</span>
+        </dd>
+        <dt><span>Width</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.width}}mm</span>
+        </dd>
+        <dt><span>Tested Width</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedWidth}}</span>
+        </dd>
+        <dt><span>Hole Size</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.holeSize}}mm</span>
+        </dd>
+        <dt><span>Tested Hole Size</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedHoleSize}}</span>
+        </dd>
+        <dt><span>Drill Water Consumption</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.drillWaterConsumption}}l/s</span>
+        </dd>
+        <dt><span>Tested Drill Water Consumption</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedDrillWaterConsumption}}</span>
+        </dd>
+        <dt><span>Cycle Time Bolting</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.cycleTimeBolting}}sec</span>
+        </dd>
+        <dt><span>Tested Cycle Time Bolting</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedCycleTimeBolting}}</span>
+        </dd>
+        <dt><span>Water Consumption Per Metre Drilled</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.waterConsumptionPerMetreDrilled}}l/m</span>
+        </dd>
+        <dt><span>Tested Water Consumption Per Metre Drilled</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedWaterConsumptionPerMetreDrilled}}</span>
+        </dd>
+        <dt><span>Power Source</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.powerSource}}</span>
+        </dd>
+        <dt><span>Tested Power Source</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedPowerSource}}</span>
+        </dd>
+        <dt><span>Tramming Speed</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.trammingSpeed}}Sec – min</span>
+        </dd>
+        <dt><span>Tested Tramming Speed</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedTrammingSpeed}}</span>
+        </dd>
+        <dt><span>Bolt Length Range</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.boltLengthRange}}mm</span>
+        </dd>
+        <dt><span>Tested Bolt Length Range</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedBoltLengthRange}}</span>
+        </dd>
+        <dt><span>Drill Speed</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.drillSpeed}}Sec  or min</span>
+        </dd>
+        <dt><span>Tested Drill Speed</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedDrillSpeed}}</span>
+        </dd>
+        <dt><span>Gradeability</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.gradeability}}Degrees</span>
+        </dd>
+        <dt><span>Tested Gradeability</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedGradeability}}</span>
+        </dd>
+        <dt><span>Number Of Booms</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.numberOfBooms}}</span>
+        </dd>
+        <dt><span>Tested Number Of Booms</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedNumberOfBooms}}</span>
+        </dd>
+        <dt><span>Type Of Boom</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.typeOfBoom}}</span>
+        </dd>
+        <dt><span>Tested Type Of Boom</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedTypeOfBoom}}</span>
+        </dd>
+        <dt><span>Outer Turning Radius</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.outerTurningRadius}}mm</span>
+        </dd>
+        <dt><span>Tested Outer Turning Radius</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedOuterTurningRadius}}</span>
+        </dd>
+        <dt><span>Inner Turning Radius</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.innerTurningRadius}}mm</span>
+        </dd>
+        <dt><span>Tested Inner Turning Radius</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedInnerTurningRadius}}</span>
+        </dd>
+        <dt><span>Observations 1</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.observations1}}</span>
+        </dd>
+        <dt><span>Tested Observations 1</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedObservations1}}</span>
+        </dd>
+        <dt><span>Observations 2</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.observations2}}</span>
+        </dd>
+        <dt><span>Tested Observations 2</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedObservations2}}</span>
+        </dd>
+        <dt><span>Observations 3</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.observations3}}</span>
+        </dd>
+        <dt><span>Tested Observations 3</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedObservations3}}</span>
+        </dd>
+        <dt><span>Observations 4</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.observations4}}</span>
+        </dd>
+        <dt><span>Tested Observations 4</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedObservations4}}</span>
+        </dd>
+        <dt><span>Observations 5</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.observations5}}</span>
+        </dd>
+        <dt><span>Tested Observations 5</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedObservations5}}</span>
+        </dd>
+        <dt><span>Observations 6</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.observations6}}</span>
+        </dd>
+        <dt><span>Tested Observations 6</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedObservations6}}</span>
+        </dd>
+        <dt><span>Operators Comments</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.operators_Comments}}</span>
+        </dd>
+        <dt><span>Tested Operators Comments</span></dt>
+        <dd>
+            <span>{{vm.stopSupportingTool.testedOperators_Comments}}</span>
+        </dd>
+        <dt><span>Oem Name</span></dt>
+        <dd>
+            <a ui-sref="company-detail({id:vm.stopSupportingTool.oemName.id})">{{vm.stopSupportingTool.oemName.name}}</a>
+        </dd>
+        <dt><span>Added By</span></dt>
+        <dd>
+            {{vm.stopSupportingTool.addedBy.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="stop-supporting-tool-detail.edit({id:vm.stopSupportingTool.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

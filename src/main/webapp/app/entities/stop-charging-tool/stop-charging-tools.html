@@ -1,0 +1,212 @@
+<div>
+   <h4 class="tool-header">ACTIVITY AREA: STOPING</h4>
+    <h4>CHARGING TOOLS</h4>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="stop-charging-tool.new" has-any-authority="ROLE_ADMIN, ROLE_USER">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs-down" >
+                        Add New Tool
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="Enter Keyword">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive box-shadow--8dp">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="model"><span>Model</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="technologyType"><span>Technology Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="trl"><span>TRL</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="photo"><span>Photo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="datasheet"><span>Datasheet</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!-- <th jh-sort-by="hoseLength"><span>Hose Length</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedHoseLength"><span>Tested Hose Length</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="holeDiameter"><span>Hole Diameter</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedHoleDiameter"><span>Tested Hole Diameter</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="explosiveType"><span>Explosive Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedExplosiveType"><span>Tested Explosive Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="TankCapacity"><span>Tank Capacity</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedTankCapacity"><span>Tested Tank Capacity</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="height"><span>Height</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedHeight"><span>Tested Height</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="weight"><span>Weight</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedWeight"><span>Tested Weight</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="length"><span>Length</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedLength"><span>Tested Length</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="rpmOutput"><span>Rpm Output</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedRpmOutput"><span>Tested Rpm Output</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="torque"><span>Torque</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedTorque"><span>Tested Torque</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="tankRange"><span>Tank Range</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedTankRange"><span>Tested Tank Range</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fuelConsumption"><span>Fuel Consumption</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedFuelConsumption"><span>Tested Fuel Consumption</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="availability"><span>Availability</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedAvailability"><span>Tested Availability</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="operatingCostPerTonne"><span>Operating Cost Per Tonne</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedOperatingCostPerTonne"><span>Tested Operating Cost Per Tonne</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="fuelConsumptionPerExplosiveKgCharged"><span>Fuel Consumption Per Explosive Kg Charged</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedFuelConsumptionPerExplosiveKgCharged"><span>Tested Fuel Consumption Per Explosive Kg Charged</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="controlSystem"><span>Control System</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedControlSystem"><span>Tested Control System</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cycleTime"><span>Cycle Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedCycleTime"><span>Tested Cycle Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="turningRadiusInner"><span>Turning Radius Inner</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedTurningRadiusInner"><span>Tested Turning Radius Inner</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="turningRadiusOuter"><span>Turning Radius Outer</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedTurningRadiusOuter"><span>Tested Turning Radius Outer</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="lubricationType"><span>Lubrication Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedLubricationType"><span>Tested Lubrication Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="temperatureAtAmbient"><span>Temperature At Ambient</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedTemperatureAtAmbient"><span>Tested Temperature At Ambient</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations1"><span>Observations 1</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations1"><span>Tested Observations 1</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations2"><span>Observations 2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations2"><span>Tested Observations 2</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations3"><span>Observations 3</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations3"><span>Tested Observations 3</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations4"><span>Observations 4</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations4"><span>Tested Observations 4</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations5"><span>Observations 5</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations5"><span>Tested Observations 5</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="observations6"><span>Observations 6</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedObservations6"><span>Tested Observations 6</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="operators_Comments"><span>Operators Comments</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="testedOperators_Comments"><span>Tested Operators Comments</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="oemName.name"><span>OEM Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+<!--                     <th jh-sort-by="addedBy.login"><span>Added By</span> <span class="glyphicon glyphicon-sort"></span></th>
+ -->                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="stopChargingTool in vm.stopChargingTools track by stopChargingTool.id">
+                    <td><a ui-sref="stop-charging-tool-detail({id:stopChargingTool.id})">{{stopChargingTool.id}}</a></td>
+                    <td>{{stopChargingTool.name}}</td>
+                    <td>{{stopChargingTool.model}}</td>
+                    <td>{{stopChargingTool.technologyType}}</td>
+                    <td>{{stopChargingTool.trl}}</td>
+                    <td>
+                        <a ng-if="stopChargingTool.photo" ng-click="vm.openFile(stopChargingTool.photoContentType, stopChargingTool.photo)">
+                            <img data-ng-src="{{'data:' + stopChargingTool.photoContentType + ';base64,' + stopChargingTool.photo}}" style="max-height: 30px;" alt="stopChargingTool image"/>
+                        </a>
+                        <span ng-if="stopChargingTool.photo"></span>
+                    </td>
+                    <td>
+                        <a ng-if="stopChargingTool.datasheet" ng-click="vm.openFile(stopChargingTool.datasheetContentType, stopChargingTool.datasheet)">View/Download</a>
+                        <span ng-if="stopChargingTool.datasheet"></span>
+                    </td>
+                   <!--  <td>{{stopChargingTool.hoseLength}}</td>
+                    <td>{{stopChargingTool.testedHoseLength}}</td>
+                    <td>{{stopChargingTool.holeDiameter}}</td>
+                    <td>{{stopChargingTool.testedHoleDiameter}}</td>
+                    <td>{{stopChargingTool.explosiveType}}</td>
+                    <td>{{stopChargingTool.testedExplosiveType}}</td>
+                    <td>{{stopChargingTool.TankCapacity}}</td>
+                    <td>{{stopChargingTool.testedTankCapacity}}</td>
+                    <td>{{stopChargingTool.height}}</td>
+                    <td>{{stopChargingTool.testedHeight}}</td>
+                    <td>{{stopChargingTool.weight}}</td>
+                    <td>{{stopChargingTool.testedWeight}}</td>
+                    <td>{{stopChargingTool.length}}</td>
+                    <td>{{stopChargingTool.testedLength}}</td>
+                    <td>{{stopChargingTool.rpmOutput}}</td>
+                    <td>{{stopChargingTool.testedRpmOutput}}</td>
+                    <td>{{stopChargingTool.torque}}</td>
+                    <td>{{stopChargingTool.testedTorque}}</td>
+                    <td>{{stopChargingTool.tankRange}}</td>
+                    <td>{{stopChargingTool.testedTankRange}}</td>
+                    <td>{{stopChargingTool.fuelConsumption}}</td>
+                    <td>{{stopChargingTool.testedFuelConsumption}}</td>
+                    <td>{{stopChargingTool.availability}}</td>
+                    <td>{{stopChargingTool.testedAvailability}}</td>
+                    <td>{{stopChargingTool.operatingCostPerTonne}}</td>
+                    <td>{{stopChargingTool.testedOperatingCostPerTonne}}</td>
+                    <td>{{stopChargingTool.fuelConsumptionPerExplosiveKgCharged}}</td>
+                    <td>{{stopChargingTool.testedFuelConsumptionPerExplosiveKgCharged}}</td>
+                    <td>{{stopChargingTool.controlSystem}}</td>
+                    <td>{{stopChargingTool.testedControlSystem}}</td>
+                    <td>{{stopChargingTool.cycleTime}}</td>
+                    <td>{{stopChargingTool.testedCycleTime}}</td>
+                    <td>{{stopChargingTool.turningRadiusInner}}</td>
+                    <td>{{stopChargingTool.testedTurningRadiusInner}}</td>
+                    <td>{{stopChargingTool.turningRadiusOuter}}</td>
+                    <td>{{stopChargingTool.testedTurningRadiusOuter}}</td>
+                    <td>{{stopChargingTool.lubricationType}}</td>
+                    <td>{{stopChargingTool.testedLubricationType}}</td>
+                    <td>{{stopChargingTool.temperatureAtAmbient}}</td>
+                    <td>{{stopChargingTool.testedTemperatureAtAmbient}}</td>
+                    <td>{{stopChargingTool.observations1}}</td>
+                    <td>{{stopChargingTool.testedObservations1}}</td>
+                    <td>{{stopChargingTool.observations2}}</td>
+                    <td>{{stopChargingTool.testedObservations2}}</td>
+                    <td>{{stopChargingTool.observations3}}</td>
+                    <td>{{stopChargingTool.testedObservations3}}</td>
+                    <td>{{stopChargingTool.observations4}}</td>
+                    <td>{{stopChargingTool.testedObservations4}}</td>
+                    <td>{{stopChargingTool.observations5}}</td>
+                    <td>{{stopChargingTool.testedObservations5}}</td>
+                    <td>{{stopChargingTool.observations6}}</td>
+                    <td>{{stopChargingTool.testedObservations6}}</td>
+                    <td>{{stopChargingTool.operators_Comments}}</td>
+                    <td>{{stopChargingTool.testedOperators_Comments}}</td> -->
+                    <td>
+                        <a ui-sref="company-detail({id:stopChargingTool.oemName.id})">{{stopChargingTool.oemName.name}}</a>
+                    </td>
+                   <!--  <td>
+                        {{stopChargingTool.addedBy.login}}
+                    </td> -->
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="stop-charging-tool-detail({id:stopChargingTool.id})"
+                                    class="btn btn-info btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER, GENERAL_USER">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="stop-charging-tool.edit({id:stopChargingTool.id})"
+                                    class="btn btn-primary btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="stop-charging-tool.delete({id:stopChargingTool.id})"
+                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

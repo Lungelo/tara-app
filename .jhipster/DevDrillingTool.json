@@ -1,0 +1,494 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "oemName",
+            "otherEntityName": "company",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+            ],
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "addedBy",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+            ],
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "devDrillingTool"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "3"
+        },
+		{
+            "fieldName": "model",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "3"
+        },
+        {
+            "fieldName": "technologyType",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength"
+            ],
+            "fieldValidateRulesMinlength": "3"
+        },
+        {
+            "fieldName": "trl",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "1",
+            "fieldValidateRulesMax": "9"
+        },
+        {
+            "fieldName": "photo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "datasheet",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "weight",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedWeight",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        },
+        {
+            "fieldName": "length",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedLength",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        },
+        {
+            "fieldName": "drillingRate",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedDrillingRate",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        },
+		
+        {
+            "fieldName": "noiseLevel",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedNoiseLevel",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        },
+        {
+            "fieldName": "settingUpTime",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedSettingUpTime",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        },
+        {
+            "fieldName": "dismantlingTime",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedDismantlingTime",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        },
+        {
+            "fieldName": "waterUsePerMetreDrilled",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedWaterUsePerMetreDrilled",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        },
+        {
+            "fieldName": "availability",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required",
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "1",
+            "fieldValidateRulesMax": "100"
+        },
+		{
+            "fieldName": "testedAvailability",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+               
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "1",
+            "fieldValidateRulesMax": "100"
+        },
+        {
+            "fieldName": "costPerMeterDrilled",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedCostPerMeterDrilled",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+               
+            ]
+        },
+        {
+            "fieldName": "holeSizeRange",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedHoleSizeRange",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                
+            ]
+        },
+        {
+            "fieldName": "powerSource",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedPowerSource",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                
+            ]
+        },
+        {
+            "fieldName": "powerRating",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedPowerRating",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        },
+        {
+            "fieldName": "cost",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedCost",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+               
+            ]
+        },
+        {
+            "fieldName": "trammingSpeed",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+		
+		,
+		{
+            "fieldName": "testedTrammingSpeed",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        }
+		
+		,
+        {
+            "fieldName": "workingHeight",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+		,
+		{
+            "fieldName": "testedWorkingHeight",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        }
+		,
+        {
+            "fieldName": "gradeability",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+		,
+		{
+            "fieldName": "testedGradeability",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        }
+		,
+        {
+            "fieldName": "numberOfBoom",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+		,
+		{
+            "fieldName": "testedNumberOfBoom",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+               
+            ]
+        }
+		,
+        {
+            "fieldName": "typerOfBoom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+		,
+		{
+            "fieldName": "testedTyperOfBoom",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                
+            ]
+        }
+		,
+        {
+            "fieldName": "outerTurningRadius",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+		{
+            "fieldName": "testedOuterTurningRadius",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        },
+		{
+            "fieldName": "innerTurningRadius",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+		,
+		{
+            "fieldName": "testedInnerTurningRadius",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                
+            ]
+        }
+		,{
+            "fieldName": "observations1",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			"required"
+			]
+        }
+		,
+		{
+            "fieldName": "testedObservations1",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			
+			]
+        }
+		,
+        {
+            "fieldName": "observations2",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			"required"
+			]
+        },
+		{
+            "fieldName": "testedObservations2",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			
+			]
+        },
+		{
+            "fieldName": "observations3",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			
+			]
+        },
+		{
+            "fieldName": "testedObservations3",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			
+			]
+        },{
+            "fieldName": "observations4",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			"required"
+			]
+        },
+		{
+            "fieldName": "testedObservations4",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			
+			]
+        },{
+            "fieldName": "observations5",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			"required"
+			]
+        }
+        ,
+		{
+            "fieldName": "testedObservations5",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			
+			]
+        }
+        ,{
+            "fieldName": "observations6",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			"required"
+			]
+        }
+        ,
+		{
+            "fieldName": "testedObservations6",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			
+			]
+        }
+        ,{
+            "fieldName": "operators_Comments",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			"required"
+			]
+        }
+		,{
+            "fieldName": "testedOperators_Comments",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text",
+            "fieldValidateRules": [
+			
+			]
+        }
+
+    ],
+    "changelogDate": "20170720131247",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "dev_drilling_tool",
+    "pagination": "pagination"
+}

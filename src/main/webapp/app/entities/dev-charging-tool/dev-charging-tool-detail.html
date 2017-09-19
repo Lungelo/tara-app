@@ -1,0 +1,275 @@
+
+<div>
+    <h2><span> Charging Tool</span> {{vm.devChargingTool.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.name}}</span>
+        </dd>
+        <dt><span>Model</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.model}}</span>
+        </dd>
+        <dt><span>Technology Type</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.technologyType}}</span>
+        </dd>
+        <dt><span>Trl</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.trl}}</span>
+        </dd>
+        <dt><span>Photo</span></dt>
+        <dd>
+            <div ng-if="vm.devChargingTool.photo">
+                <a ng-click="vm.openFile(vm.devChargingTool.photoContentType, vm.devChargingTool.photo)">
+                    <img data-ng-src="{{'data:' + vm.devChargingTool.photoContentType + ';base64,' + vm.devChargingTool.photo}}" style="max-width: 100%;" alt="devChargingTool image"/>
+                </a>
+                
+            </div>
+        </dd>
+        <dt><span>Datasheet</span></dt>
+        <dd>
+            <div ng-if="vm.devChargingTool.datasheet">
+                <a ng-click="vm.openFile(vm.devChargingTool.datasheetContentType, vm.devChargingTool.datasheet)">View/Download</a>
+                
+            </div>
+        </dd>
+        <dt><span>Hose Length</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.hoseLength}} mm</span>
+        </dd>
+        <dt><span>Tested Hose Length</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedHoseLength}}</span>
+        </dd>
+        <dt><span>Hole Diameter</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.holeDiameter}}mm</span>
+        </dd>
+        <dt><span>Tested Hole Diameter</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedHoleDiameter}}</span>
+        </dd>
+        <dt><span>Explosive Type</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.explosiveType}}kg or each</span>
+        </dd>
+        <dt><span>Tesded Explosive Type</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.tesdedExplosiveType}}</span>
+        </dd>
+        <dt><span>Tank Capacity</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.tankCapacity}}kg</span>
+        </dd>
+        <dt><span>Tested Tank Capacity</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedTankCapacity}}</span>
+        </dd>
+        <dt><span>Height</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.height}}mm</span>
+        </dd>
+        <dt><span>Tested Height</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedHeight}}</span>
+        </dd>
+        <dt><span>Weight</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.weight}}kg</span>
+        </dd>
+        <dt><span>Tested Weight</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedWeight}}</span>
+        </dd>
+        <dt><span>Length</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.length}}kg</span>
+        </dd>
+        <dt><span>Tested Length</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedLength}}</span>
+        </dd>
+        <dt><span>Rpm Output</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.rpmOutput}}RPM</span>
+        </dd>
+        <dt><span>Tested Rpm Output</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedRpmOutput}}</span>
+        </dd>
+        <dt><span>Torque</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.torque}}kNm</span>
+        </dd>
+        <dt><span>Tested Torque</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedTorque}}</span>
+        </dd>
+        <dt><span>Tank Range</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.tankRange}}hrs</span>
+        </dd>
+        <dt><span>Tested Tank Range</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedTankRange}}</span>
+        </dd>
+        <dt><span>Fuel Consumption</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.fuelConsumption}}l/min</span>
+        </dd>
+        <dt><span>Tested Fuel Consumption</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedFuelConsumption}}</span>
+        </dd>
+        <dt><span>Availability</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.availability}}%</span>
+        </dd>
+        <dt><span>Tested Availability</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedAvailability}}</span>
+        </dd>
+        <dt><span>Operating Cost Per Tonne</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.operatingCostPerTonne}}R/t</span>
+        </dd>
+        <dt><span>Tested Operating Cost Per Tonne</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedOperatingCostPerTonne}}</span>
+        </dd>
+        <dt><span>Fuel Consumption Per Explosive Kg Charged</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.fuelConsumptionPerExplosiveKgCharged}}l/kg</span>
+        </dd>
+        <dt><span>Tested Fuel Consumption Per Explosive Kg Charged</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedFuelConsumptionPerExplosiveKgCharged}}</span>
+        </dd>
+        <dt><span>Control System</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.controlSystem}}</span>
+        </dd>
+        <dt><span>Tested Control System</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedControlSystem}}</span>
+        </dd>
+        <dt><span>Cycle Time</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.cycleTime}}S</span>
+        </dd>
+        <dt><span>Tested Cycle Time</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedCycleTime}}</span>
+        </dd>
+        <dt><span>Turning Radius Inner</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.turningRadiusInner}}mm</span>
+        </dd>
+        <dt><span>Tested Turning Radius Inner</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedTurningRadiusInner}}</span>
+        </dd>
+        <dt><span>Turning Radius Outer</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.turningRadiusOuter}}mm</span>
+        </dd>
+        <dt><span>Tested Turning Radius Outer</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedTurningRadiusOuter}}</span>
+        </dd>
+        <dt><span>Lubrication Type</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.lubricationType}}</span>
+        </dd>
+        <dt><span>Tested Lubrication Type</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedLubricationType}}</span>
+        </dd>
+        <dt><span>Temperature At Ambient</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.temperatureAtAmbient}}◦C</span>
+        </dd>
+        <dt><span>Tested Temperature At Ambient</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedTemperatureAtAmbient}}</span>
+        </dd>
+        <dt><span>Observations 1</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.observations1}}</span>
+        </dd>
+        <dt><span>Tested Observations 1</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedObservations1}}</span>
+        </dd>
+        <dt><span>Observations 2</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.observations2}}</span>
+        </dd>
+        <dt><span>Tested Observations 2</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedObservations2}}</span>
+        </dd>
+        <dt><span>Observations 3</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.observations3}}</span>
+        </dd>
+        <dt><span>Tested Observations 3</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedObservations3}}</span>
+        </dd>
+        <dt><span>Observations 4</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.observations4}}</span>
+        </dd>
+        <dt><span>Tested Observations 4</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedObservations4}}</span>
+        </dd>
+        <dt><span>Observations 5</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.observations5}}</span>
+        </dd>
+        <dt><span>Tested Observations 5</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedObservations5}}</span>
+        </dd>
+        <dt><span>Observations 6</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.observations6}}</span>
+        </dd>
+        <dt><span>Tested Observations 6</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedObservations6}}</span>
+        </dd>
+        <dt><span>Operators Comments</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.operators_Comments}}</span>
+        </dd>
+        <dt><span>Tested Operators Comments</span></dt>
+        <dd>
+            <span>{{vm.devChargingTool.testedOperators_Comments}}</span>
+        </dd>
+        <dt><span>Oem Name</span></dt>
+        <dd>
+            <a ui-sref="company-detail({id:vm.devChargingTool.oemName.id})">{{vm.devChargingTool.oemName.name}}</a>
+        </dd>
+        <dt><span>Added By</span></dt>
+        <dd>
+            {{vm.devChargingTool.addedBy.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="dev-charging-tool-detail.edit({id:vm.devChargingTool.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720130300_added_entity_Company.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720131247_added_entity_DevDrillingTool.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720131252_added_entity_StopDrillingTool.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132449_added_entity_DevChargingTool.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132450_added_entity_DevSupportingTool.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132451_added_entity_DevCleaningTool.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132453_added_entity_StopCleaningTool.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132453_added_entity_StopChargingTool.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132454_added_entity_StopSupportingTool.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132455_added_entity_Sensor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132456_added_entity_SensorNode.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132457_added_entity_WirelessSensorNetwork.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132458_added_entity_PositioningSystem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132459_added_entity_GetWay.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/21170720132460_added_entity_UserExtra.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20170720131247_added_entity_constraints_DevDrillingTool.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720131252_added_entity_constraints_StopDrillingTool.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132449_added_entity_constraints_DevChargingTool.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132450_added_entity_constraints_DevSupportingTool.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132451_added_entity_constraints_DevCleaningTool.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132453_added_entity_constraints_StopCleaningTool.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132453_added_entity_constraints_StopChargingTool.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132454_added_entity_constraints_StopSupportingTool.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132455_added_entity_constraints_Sensor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132456_added_entity_constraints_SensorNode.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132457_added_entity_constraints_WirelessSensorNetwork.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132458_added_entity_constraints_PositioningSystem.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20170720132459_added_entity_constraints_GetWay.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/21170720132460_added_entity_constraints_UserExtra.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+</databaseChangeLog>

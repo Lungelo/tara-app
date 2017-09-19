@@ -1,0 +1,396 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="mySensorNodeLabel">Add or edit a Sensor Node</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.sensorNode.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.sensorNode.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.sensorNode.name"
+                    required ng-minlength="3"/>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_technologyType">Technology Type</label>
+            <input type="text" class="form-control" name="technologyType" id="field_technologyType"
+                    ng-model="vm.sensorNode.technologyType"
+                    required ng-minlength="3"/>
+            <div ng-show="editForm.technologyType.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.technologyType.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.technologyType.$error.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_trl">TRL</label>
+            <input type="number" class="form-control" name="trl" id="field_trl"
+                    ng-model="vm.sensorNode.trl"
+                    required min="1" max="9"/>
+            <div ng-show="editForm.trl.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.trl.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.trl.$error.min" translate-value-min="1">
+                    This field should be at least 1.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.trl.$error.max">
+                    This field cannot be more than 9.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.trl.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setPhoto($file, vm.sensorNode)" ngf-pattern="'image/*'">
+            <label class="control-label" for="field_photo">Photo</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.sensorNode.photoContentType + ';base64,' + vm.sensorNode.photo}}" style="max-height: 100px;" ng-if="vm.sensorNode.photo" alt="sensorNode image"/>
+                <div ng-if="vm.sensorNode.photo" class="help-block clearfix">
+                    <span class="pull-left">{{vm.sensorNode.photoContentType}}, {{vm.byteSize(vm.sensorNode.photo)}}</span>
+                    <button type="button" ng-click="vm.sensorNode.photo=null;vm.sensorNode.photoContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setPhoto($file, vm.sensorNode)" accept="image/*">
+                                        <i class="glyphicon glyphicon-open"></i>  Browse
+
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="photo" id="field_photo"
+                    ng-model="vm.sensorNode.photo"
+                    />
+            <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
+                    ng-model="vm.sensorNode.photoContentType" />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setDatasheet($file, vm.sensorNode)">
+            <label class="control-label" for="field_datasheet">Datasheet</label>
+            <div>
+                <div ng-if="vm.sensorNode.datasheet" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.sensorNode.datasheetContentType, vm.sensorNode.datasheet)">open</a><br>
+                    <span class="pull-left">{{vm.sensorNode.datasheetContentType}}, {{vm.byteSize(vm.sensorNode.datasheet)}}</span>
+                    <button type="button" ng-click="vm.sensorNode.datasheet=null;vm.sensorNode.datasheetContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setDatasheet($file, vm.sensorNode)">
+                                        <i class="glyphicon glyphicon-open"></i>  Browse
+
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="datasheet" id="field_datasheet"
+                    ng-model="vm.sensorNode.datasheet"
+                    />
+            <input type="hidden" class="form-control" name="datasheetContentType" id="field_datasheetContentType"
+                    ng-model="vm.sensorNode.datasheetContentType" />
+        </div>
+        
+         </br>
+        <div class="form-group  text-center">
+            <label style="padding: 6px 12px;
+    text-transform: uppercase;
+    border: 1px solid #003667;
+    color: #003667;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 0;
+    background-color: transparent;" >Specification</label>
+            
+        </div>
+        <hr></hr>
+        
+        
+        
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_size">Size</label>
+            <input type="number" class="form-control" name="size" id="field_size"
+                    ng-model="vm.sensorNode.size"
+                    required/>
+            <div ng-show="editForm.size.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.size.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.size.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_cost">Cost</label>
+            <input type="number" class="form-control" name="cost" id="field_cost"
+                    ng-model="vm.sensorNode.cost"
+                    required/>
+            <div ng-show="editForm.cost.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.cost.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.cost.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_bandwidth">Bandwidth</label>
+            <input type="number" class="form-control" name="bandwidth" id="field_bandwidth"
+                    ng-model="vm.sensorNode.bandwidth"
+                    required/>
+            <div ng-show="editForm.bandwidth.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.bandwidth.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.bandwidth.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_dataRate">Data Rate</label>
+            <input type="number" class="form-control" name="dataRate" id="field_dataRate"
+                    ng-model="vm.sensorNode.dataRate"
+                    required/>
+            <div ng-show="editForm.dataRate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dataRate.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.dataRate.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_flashMemory">Flash Memory</label>
+            <input type="number" class="form-control" name="flashMemory" id="field_flashMemory"
+                    ng-model="vm.sensorNode.flashMemory"
+                    required/>
+            <div ng-show="editForm.flashMemory.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.flashMemory.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.flashMemory.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_ram">Ram</label>
+            <input type="text" class="form-control" name="ram" id="field_ram"
+                    ng-model="vm.sensorNode.ram"
+                    required/>
+            <div ng-show="editForm.ram.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.ram.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_energyUsage">Energy Usage</label>
+            <input type="number" class="form-control" name="energyUsage" id="field_energyUsage"
+                    ng-model="vm.sensorNode.energyUsage"
+                    required/>
+            <div ng-show="editForm.energyUsage.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.energyUsage.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.energyUsage.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_sleepEnergy">Sleep Energy</label>
+            <input type="number" class="form-control" name="sleepEnergy" id="field_sleepEnergy"
+                    ng-model="vm.sensorNode.sleepEnergy"
+                    required/>
+            <div ng-show="editForm.sleepEnergy.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.sleepEnergy.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.sleepEnergy.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_dutyCycle">Duty Cycle</label>
+            <input type="text" class="form-control" name="dutyCycle" id="field_dutyCycle"
+                    ng-model="vm.sensorNode.dutyCycle"
+                    required/>
+            <div ng-show="editForm.dutyCycle.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dutyCycle.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_frequency">Frequency</label>
+            <input type="number" class="form-control" name="frequency" id="field_frequency"
+                    ng-model="vm.sensorNode.frequency"
+                    required/>
+            <div ng-show="editForm.frequency.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.frequency.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.frequency.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_range">Range</label>
+            <input type="text" class="form-control" name="range" id="field_range"
+                    ng-model="vm.sensorNode.range"
+                    required/>
+            <div ng-show="editForm.range.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.range.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_mobility">Mobility</label>
+            <select class="form-control" name="mobility" ng-model="vm.sensorNode.mobility" id="field_mobility" required>
+                <option value="YES">YES</option>
+                <option value="NO">NO</option>
+            </select>
+            <div ng-show="editForm.mobility.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.mobility.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_resilience">Resilience</label>
+            <input type="number" class="form-control" name="resilience" id="field_resilience"
+                    ng-model="vm.sensorNode.resilience"
+                    required/>
+            <div ng-show="editForm.resilience.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.resilience.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.resilience.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_selfTesting">Self Testing</label>
+            <select class="form-control" name="selfTesting" ng-model="vm.sensorNode.selfTesting" id="field_selfTesting" required>
+                <option value="YES">YES</option>
+                <option value="NO">NO</option>
+            </select>
+            <div ng-show="editForm.selfTesting.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.selfTesting.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_selfCalibration">Self Calibration</label>
+            <select class="form-control" name="selfCalibration" ng-model="vm.sensorNode.selfCalibration" id="field_selfCalibration" required>
+                <option value="YES">YES</option>
+                <option value="NO">NO</option>
+            </select>
+            <div ng-show="editForm.selfCalibration.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.selfCalibration.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_selfRepair">Self Repair</label>
+            <select class="form-control" name="selfRepair" ng-model="vm.sensorNode.selfRepair" id="field_selfRepair" required>
+                <option value="YES">YES</option>
+                <option value="NO">NO</option>
+            </select>
+            <div ng-show="editForm.selfRepair.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.selfRepair.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_transmissionPower">Transmission Power</label>
+            <input type="number" class="form-control" name="transmissionPower" id="field_transmissionPower"
+                    ng-model="vm.sensorNode.transmissionPower"
+                    />
+        </div>
+
+        <div class="form-group col-xs-6 hide-content">
+            <label for="field_oemName">Oem Name</label>
+            <select class="form-control" id="field_oemName" name="oemName" ng-model="vm.sensorNode.oemName" ng-options="company as company.name for company in vm.companies track by company.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group col-xs-6 hide-content">
+            <label for="field_addedBy">Added By</label>
+            <select class="form-control" id="field_addedBy" name="addedBy" ng-model="vm.sensorNode.addedBy" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

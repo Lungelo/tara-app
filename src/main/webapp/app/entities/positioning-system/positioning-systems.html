@@ -1,0 +1,155 @@
+<div>
+<h4 class="tool-header" title="Real Time Information Management System">RTIMS INFRASTRUCTURE: POSITIONING SYSTEMS</h4>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="positioning-system.new" has-any-authority="ROLE_ADMIN, ROLE_USER">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span class="hidden-xs-down" >
+                        Add New Positioning System
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="vm.searchQuery" id="searchQuery" placeholder="Enter Keyword">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="vm.search(vm.searchQuery)">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+                            <button class="btn btn-info" ng-click="vm.clear()">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive  box-shadow--8dp">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="technologyType"><span>Technology Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="trl"><span>TRL</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="photo"><span>Photo</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="datasheet"><span>Datasheet</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!-- <th jh-sort-by="accuracy"><span>Accuracy</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="coverageArea"><span>Coverage Area</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="cost"><span>Cost</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="requiredInfrastructure"><span>Required Infrastructure</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="marketMaturity"><span>Market Maturity</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="outputData"><span>Output Data</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="privacy"><span>Privacy</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="updateRate"><span>Update Rate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="systemLatency"><span>System Latency</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="_interface"><span>Interface</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="systemIntegrity"><span>System Integrity</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="robustness"><span>Robustness</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="availability"><span>Availability</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="continuity"><span>Continuity</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="scalability"><span>Scalability</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="numberOfUsers"><span>Number Of Users</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="approval"><span>Approval</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="levelOfHybridisation"><span>Level Of Hybridisation</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="technology"><span>Technology</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="measuredQuantity"><span>Measured Quantity</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="basicMeasuringPrinciple"><span>Basic Measuring Principle</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="positionAlgorithm"><span>Position Algorithm</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="signaltype"><span>Signaltype</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="signalWavelength"><span>Signal Wavelength</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="systemArchitecture"><span>System Architecture</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="application"><span>Application</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="coordinateReference"><span>Coordinate Reference</span> <span class="glyphicon glyphicon-sort"></span></th> -->
+                    <th jh-sort-by="oemName.name"><span>OEM Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+<!--                     <th jh-sort-by="addedBy.login"><span>Added By</span> <span class="glyphicon glyphicon-sort"></span></th>
+ -->                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="positioningSystem in vm.positioningSystems track by positioningSystem.id">
+                    <td><a ui-sref="positioning-system-detail({id:positioningSystem.id})">{{positioningSystem.id}}</a></td>
+                    <td>{{positioningSystem.name}}</td>
+                    <td>{{positioningSystem.technologyType}}</td>
+                    <td>{{positioningSystem.trl}}</td>
+                    <td>
+                        <a ng-if="positioningSystem.photo" ng-click="vm.openFile(positioningSystem.photoContentType, positioningSystem.photo)">
+                            <img data-ng-src="{{'data:' + positioningSystem.photoContentType + ';base64,' + positioningSystem.photo}}" style="max-height: 30px;" alt="positioningSystem image"/>
+                        </a>
+                        <span ng-if="positioningSystem.photo"></span>
+                    </td>
+                    <td>
+                        <a ng-if="positioningSystem.datasheet" ng-click="vm.openFile(positioningSystem.datasheetContentType, positioningSystem.datasheet)">View/Download</a>
+                        <span ng-if="positioningSystem.datasheet"></span>
+                    </td>
+                    <!-- <td>{{positioningSystem.accuracy}}</td>
+                    <td>{{positioningSystem.coverageArea}}</td>
+                    <td>{{positioningSystem.cost}}</td>
+                    <td>{{positioningSystem.requiredInfrastructure}}</td>
+                    <td>{{positioningSystem.marketMaturity}}</td>
+                    <td>{{positioningSystem.outputData}}</td>
+                    <td>{{positioningSystem.privacy}}</td>
+                    <td>{{positioningSystem.updateRate}}</td>
+                    <td>{{positioningSystem.systemLatency}}</td>
+                    <td>{{positioningSystem._interface}}</td>
+                    <td>{{positioningSystem.systemIntegrity}}</td>
+                    <td>{{positioningSystem.robustness}}</td>
+                    <td>{{positioningSystem.availability}}</td>
+                    <td>{{positioningSystem.continuity}}</td>
+                    <td>{{positioningSystem.scalability}}</td>
+                    <td>{{positioningSystem.numberOfUsers}}</td>
+                    <td>{{positioningSystem.approval}}</td>
+                    <td>{{positioningSystem.levelOfHybridisation}}</td>
+                    <td>{{positioningSystem.technology}}</td>
+                    <td>{{positioningSystem.measuredQuantity}}</td>
+                    <td>{{positioningSystem.basicMeasuringPrinciple}}</td>
+                    <td>{{positioningSystem.positionAlgorithm}}</td>
+                    <td>{{positioningSystem.signaltype}}</td>
+                    <td>{{positioningSystem.signalWavelength}}</td>
+                    <td>{{positioningSystem.systemArchitecture}}</td>
+                    <td>{{positioningSystem.application}}</td>
+                    <td>{{positioningSystem.coordinateReference}}</td> -->
+                    <td>
+                        <a ui-sref="company-detail({id:positioningSystem.oemName.id})">{{positioningSystem.oemName.name}}</a>
+                    </td>
+                   <!--  <td>
+                        {{positioningSystem.addedBy.login}}
+                    </td> -->
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="positioning-system-detail({id:positioningSystem.id})"
+                                    class="btn btn-info btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER , GENERAL_USER" >
+                                <span class="glyphicon glyphicon-eye-open" ></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="positioning-system.edit({id:positioningSystem.id})"
+                                    class="btn btn-primary btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER" >
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="positioning-system.delete({id:positioningSystem.id})"
+                                    class="btn btn-danger btn-sm" has-any-authority="ROLE_ADMIN, ROLE_USER" >
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

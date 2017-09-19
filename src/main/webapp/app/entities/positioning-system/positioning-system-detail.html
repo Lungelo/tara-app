@@ -1,0 +1,163 @@
+
+<div>
+    <h2><span>Positioning System</span> {{vm.positioningSystem.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.name}}</span>
+        </dd>
+        <dt><span>Technology Type</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.technologyType}}</span>
+        </dd>
+        <dt><span>Trl</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.trl}}</span>
+        </dd>
+        <dt><span>Photo</span></dt>
+        <dd>
+            <div ng-if="vm.positioningSystem.photo">
+                <a ng-click="vm.openFile(vm.positioningSystem.photoContentType, vm.positioningSystem.photo)">
+                    <img data-ng-src="{{'data:' + vm.positioningSystem.photoContentType + ';base64,' + vm.positioningSystem.photo}}" style="max-width: 100%;" alt="positioningSystem image"/>
+                </a>
+                
+            </div>
+        </dd>
+        <dt><span>Datasheet</span></dt>
+        <dd>
+            <div ng-if="vm.positioningSystem.datasheet">
+                <a ng-click="vm.openFile(vm.positioningSystem.datasheetContentType, vm.positioningSystem.datasheet)">View/Download</a>
+                
+            </div>
+        </dd>
+        <dt><span>Accuracy</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.accuracy}}</span>
+        </dd>
+        <dt><span>Coverage Area</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.coverageArea}}</span>
+        </dd>
+        <dt><span>Cost</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.cost}}</span>
+        </dd>
+        <dt><span>Required Infrastructure</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.requiredInfrastructure}}</span>
+        </dd>
+        <dt><span>Market Maturity</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.marketMaturity}}</span>
+        </dd>
+        <dt><span>Output Data</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.outputData}}</span>
+        </dd>
+        <dt><span>Privacy</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.privacy}}</span>
+        </dd>
+        <dt><span>Update Rate</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.updateRate}}</span>
+        </dd>
+        <dt><span>System Latency</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.systemLatency}}</span>
+        </dd>
+        <dt><span>Interface</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem._interface}}</span>
+        </dd>
+        <dt><span>System Integrity</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.systemIntegrity}}</span>
+        </dd>
+        <dt><span>Robustness</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.robustness}}</span>
+        </dd>
+        <dt><span>Availability</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.availability}}</span>
+        </dd>
+        <dt><span>Continuity</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.continuity}}</span>
+        </dd>
+        <dt><span>Scalability</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.scalability}}</span>
+        </dd>
+        <dt><span>Number Of Users</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.numberOfUsers}}</span>
+        </dd>
+        <dt><span>Approval</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.approval}}</span>
+        </dd>
+        <dt><span>Level Of Hybridisation</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.levelOfHybridisation}}</span>
+        </dd>
+        <dt><span>Technology</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.technology}}</span>
+        </dd>
+        <dt><span>Measured Quantity</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.measuredQuantity}}</span>
+        </dd>
+        <dt><span>Basic Measuring Principle</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.basicMeasuringPrinciple}}</span>
+        </dd>
+        <dt><span>Position Algorithm</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.positionAlgorithm}}</span>
+        </dd>
+        <dt><span>Signaltype</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.signaltype}}</span>
+        </dd>
+        <dt><span>Signal Wavelength</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.signalWavelength}}</span>
+        </dd>
+        <dt><span>System Architecture</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.systemArchitecture}}</span>
+        </dd>
+        <dt><span>Application</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.application}}</span>
+        </dd>
+        <dt><span>Coordinate Reference</span></dt>
+        <dd>
+            <span>{{vm.positioningSystem.coordinateReference}}</span>
+        </dd>
+        <dt><span>Oem Name</span></dt>
+        <dd>
+            <a ui-sref="company-detail({id:vm.positioningSystem.oemName.id})">{{vm.positioningSystem.oemName.name}}</a>
+        </dd>
+        <dt><span>Added By</span></dt>
+        <dd>
+            {{vm.positioningSystem.addedBy.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="positioning-system-detail.edit({id:vm.positioningSystem.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

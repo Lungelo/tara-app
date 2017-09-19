@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity PositioningSystem.
+    -->
+    <changeSet id="20170720132458-1" author="jhipster">
+        <createTable tableName="positioning_system">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="technology_type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="trl" type="integer">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="photo" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="photo_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="datasheet" type="longblob">
+                <constraints nullable="true" />
+            </column>
+            <column name="datasheet_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="accuracy" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="coverage_area" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="jhi_cost" type="decimal(10,2)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="required_infrastructure" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="market_maturity" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="output_data" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="privacy" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="update_rate" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="system_latency" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="interface" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="system_integrity" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="robustness" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="availability" type="${floatType}">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="continuity" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="scalability" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="number_of_users" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="approval" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="level_of_hybridisation" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="technology" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="measured_quantity" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="basic_measuring_principle" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="position_algorithm" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="signaltype" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="signal_wavelength" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="system_architecture" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="application" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="coordinate_reference" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="oem_name_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="added_by_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

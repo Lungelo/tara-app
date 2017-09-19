@@ -1,0 +1,737 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myDevDrillingToolLabel">Add or edit Tool</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.devDrillingTool.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.devDrillingTool.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.devDrillingTool.name"
+                    required ng-minlength="3"/>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_model">Model</label>
+            <input type="text" class="form-control" name="model" id="field_model"
+                    ng-model="vm.devDrillingTool.model"
+                    required ng-minlength="3"/>
+            <div ng-show="editForm.model.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.model.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.model.$error.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_technologyType">Technology Type</label>
+            <input type="text" class="form-control" name="technologyType" id="field_technologyType"
+                    ng-model="vm.devDrillingTool.technologyType"
+                    ng-minlength="3"/>
+            <div ng-show="editForm.technologyType.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.technologyType.$error.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_trl">TRL</label>
+            <input type="number" class="form-control" name="trl" id="field_trl"
+                    ng-model="vm.devDrillingTool.trl"
+                    required min="1" max="9"/>
+            <div ng-show="editForm.trl.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.trl.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.trl.$error.min" translate-value-min="1">
+                    This field should be at least 1.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.trl.$error.max">
+                    This field cannot be more than 9.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.trl.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setPhoto($file, vm.devDrillingTool)" ngf-pattern="'image/*'">
+            <label class="control-label" for="field_photo">Photo</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.devDrillingTool.photoContentType + ';base64,' + vm.devDrillingTool.photo}}" style="max-height: 100px;" ng-if="vm.devDrillingTool.photo" alt="devDrillingTool image"/>
+                <div ng-if="vm.devDrillingTool.photo" class="help-block clearfix">
+                    <span class="pull-left">{{vm.devDrillingTool.photoContentType}}, {{vm.byteSize(vm.devDrillingTool.photo)}}</span>
+                    <button type="button" ng-click="vm.devDrillingTool.photo=null;vm.devDrillingTool.photoContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setPhoto($file, vm.devDrillingTool)" accept="image/*">
+                    <i class="glyphicon glyphicon-open"></i>  Browse
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="photo" id="field_photo"
+                    ng-model="vm.devDrillingTool.photo"
+                    />
+            <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
+                    ng-model="vm.devDrillingTool.photoContentType" />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setDatasheet($file, vm.devDrillingTool)">
+            <label class="control-label" for="field_datasheet">Datasheet</label>
+            <div>
+                <div ng-if="vm.devDrillingTool.datasheet" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.devDrillingTool.datasheetContentType, vm.devDrillingTool.datasheet)">open</a><br>
+                    <span class="pull-left">{{vm.devDrillingTool.datasheetContentType}}, {{vm.byteSize(vm.devDrillingTool.datasheet)}}</span>
+                    <button type="button" ng-click="vm.devDrillingTool.datasheet=null;vm.devDrillingTool.datasheetContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setDatasheet($file, vm.devDrillingTool)">
+                   <i class="glyphicon glyphicon-open"></i>  Browse
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="datasheet" id="field_datasheet"
+                    ng-model="vm.devDrillingTool.datasheet"
+                    />
+            <input type="hidden" class="form-control" name="datasheetContentType" id="field_datasheetContentType"
+                    ng-model="vm.devDrillingTool.datasheetContentType" />
+        </div>
+        
+        
+        </br>
+		
+		<div class="form-group col-xs-6">
+            <label style="padding: 6px 12px;
+    text-transform: uppercase;
+    border: 1px solid #003667;
+    color: #003667;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 0;
+    background-color: transparent;" >Specification</label>
+            
+        </div>
+        <div class="form-group col-xs-6">
+            <label style="padding: 6px 12px;
+    text-transform: uppercase;
+    border: 1px solid #003667;
+    color: #003667;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 0;
+    background-color: transparent;" >Test Results</label>
+            
+        </div>
+		<hr></hr>
+        
+        
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_weight">Weight(kg)</label>
+            <input type="number" class="form-control" name="weight" id="field_weight"
+                    ng-model="vm.devDrillingTool.weight"
+                    required/>
+            <div ng-show="editForm.weight.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.weight.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.weight.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedWeight">Tested Weight(kg)</label>
+            <input type="number" class="form-control" name="testedWeight" id="field_testedWeight"
+                    ng-model="vm.devDrillingTool.testedWeight"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_length">Length(mm)</label>
+            <input type="number" class="form-control" name="length" id="field_length"
+                    ng-model="vm.devDrillingTool.length"
+                    required/>
+            <div ng-show="editForm.length.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.length.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.length.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedLength">Tested Length(mm)</label>
+            <input type="number" class="form-control" name="testedLength" id="field_testedLength"
+                    ng-model="vm.devDrillingTool.testedLength"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_drillingRate">Drilling Rate(m/s)</label>
+            <input type="number" class="form-control" name="drillingRate" id="field_drillingRate"
+                    ng-model="vm.devDrillingTool.drillingRate"
+                    required/>
+            <div ng-show="editForm.drillingRate.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.drillingRate.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.drillingRate.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedDrillingRate">Tested Drilling Rate(m/s)</label>
+            <input type="number" class="form-control" name="testedDrillingRate" id="field_testedDrillingRate"
+                    ng-model="vm.devDrillingTool.testedDrillingRate"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_noiseLevel">Noise Level(dBA)</label>
+            <input type="number" class="form-control" name="noiseLevel" id="field_noiseLevel"
+                    ng-model="vm.devDrillingTool.noiseLevel"
+                    required/>
+            <div ng-show="editForm.noiseLevel.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.noiseLevel.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.noiseLevel.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedNoiseLevel">Tested Noise Level(dBA)</label>
+            <input type="number" class="form-control" name="testedNoiseLevel" id="field_testedNoiseLevel"
+                    ng-model="vm.devDrillingTool.testedNoiseLevel"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_settingUpTime">Setting Up Time(min)</label>
+            <input type="number" class="form-control" name="settingUpTime" id="field_settingUpTime"
+                    ng-model="vm.devDrillingTool.settingUpTime"
+                    required/>
+            <div ng-show="editForm.settingUpTime.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.settingUpTime.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.settingUpTime.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedSettingUpTime">Tested Setting Up Time(min)</label>
+            <input type="number" class="form-control" name="testedSettingUpTime" id="field_testedSettingUpTime"
+                    ng-model="vm.devDrillingTool.testedSettingUpTime"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_dismantlingTime">Dismantling Time(min)</label>
+            <input type="number" class="form-control" name="dismantlingTime" id="field_dismantlingTime"
+                    ng-model="vm.devDrillingTool.dismantlingTime"
+                    required/>
+            <div ng-show="editForm.dismantlingTime.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.dismantlingTime.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.dismantlingTime.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedDismantlingTime">Tested Dismantling Time(min)</label>
+            <input type="number" class="form-control" name="testedDismantlingTime" id="field_testedDismantlingTime"
+                    ng-model="vm.devDrillingTool.testedDismantlingTime"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_waterUsePerMetreDrilled">Water Use Per Metre Drilled(l/m)</label>
+            <input type="number" class="form-control" name="waterUsePerMetreDrilled" id="field_waterUsePerMetreDrilled"
+                    ng-model="vm.devDrillingTool.waterUsePerMetreDrilled"
+                    required/>
+            <div ng-show="editForm.waterUsePerMetreDrilled.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.waterUsePerMetreDrilled.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.waterUsePerMetreDrilled.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedWaterUsePerMetreDrilled">Tested Water Use Per Metre Drilled(l/m)</label>
+            <input type="number" class="form-control" name="testedWaterUsePerMetreDrilled" id="field_testedWaterUsePerMetreDrilled"
+                    ng-model="vm.devDrillingTool.testedWaterUsePerMetreDrilled"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_availability">Availability(%)</label>
+            <input type="number" class="form-control" name="availability" id="field_availability"
+                    ng-model="vm.devDrillingTool.availability"
+                    required min="1" max="100"/>
+            <div ng-show="editForm.availability.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.availability.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.availability.$error.min" translate-value-min="1">
+                    This field should be at least 1.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.availability.$error.max">
+                    This field cannot be more than 100.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.availability.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedAvailability">Tested Availability(%)</label>
+            <input type="number" class="form-control" name="testedAvailability" id="field_testedAvailability"
+                    ng-model="vm.devDrillingTool.testedAvailability"
+                    min="1" max="100"/>
+            <div ng-show="editForm.testedAvailability.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.testedAvailability.$error.min" translate-value-min="1">
+                    This field should be at least 1.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.testedAvailability.$error.max">
+                    This field cannot be more than 100.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.testedAvailability.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_costPerMeterDrilled">Cost Per Meter Drilled(R/m)</label>
+            <input type="number" class="form-control" name="costPerMeterDrilled" id="field_costPerMeterDrilled"
+                    ng-model="vm.devDrillingTool.costPerMeterDrilled"
+                    required/>
+            <div ng-show="editForm.costPerMeterDrilled.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.costPerMeterDrilled.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.costPerMeterDrilled.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedCostPerMeterDrilled">Tested Cost Per Meter Drilled(R/m)</label>
+            <input type="number" class="form-control" name="testedCostPerMeterDrilled" id="field_testedCostPerMeterDrilled"
+                    ng-model="vm.devDrillingTool.testedCostPerMeterDrilled"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_holeSizeRange">Hole Size Range(mm)</label>
+            <input type="text" class="form-control" name="holeSizeRange" id="field_holeSizeRange"
+                    ng-model="vm.devDrillingTool.holeSizeRange"
+                    required/>
+            <div ng-show="editForm.holeSizeRange.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.holeSizeRange.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedHoleSizeRange">Tested Hole Size Range(mm)</label>
+            <input type="text" class="form-control" name="testedHoleSizeRange" id="field_testedHoleSizeRange"
+                    ng-model="vm.devDrillingTool.testedHoleSizeRange"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_powerSource">Power Source</label>
+            <input type="text" class="form-control" name="powerSource" id="field_powerSource"
+                    ng-model="vm.devDrillingTool.powerSource"
+                    required/>
+            <div ng-show="editForm.powerSource.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.powerSource.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedPowerSource">Tested Power Source</label>
+            <input type="text" class="form-control" name="testedPowerSource" id="field_testedPowerSource"
+                    ng-model="vm.devDrillingTool.testedPowerSource"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_powerRating">Power Rating(kW)</label>
+            <input type="number" class="form-control" name="powerRating" id="field_powerRating"
+                    ng-model="vm.devDrillingTool.powerRating"
+                    required/>
+            <div ng-show="editForm.powerRating.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.powerRating.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.powerRating.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedPowerRating">Tested Power Rating(kW)</label>
+            <input type="number" class="form-control" name="testedPowerRating" id="field_testedPowerRating"
+                    ng-model="vm.devDrillingTool.testedPowerRating"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_cost">Cost(R)</label>
+            <input type="number" class="form-control" name="cost" id="field_cost"
+                    ng-model="vm.devDrillingTool.cost"
+                    required/>
+            <div ng-show="editForm.cost.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.cost.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.cost.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedCost">Tested Cost(R)</label>
+            <input type="number" class="form-control" name="testedCost" id="field_testedCost"
+                    ng-model="vm.devDrillingTool.testedCost"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_trammingSpeed">Tramming Speed(km/hr)</label>
+            <input type="number" class="form-control" name="trammingSpeed" id="field_trammingSpeed"
+                    ng-model="vm.devDrillingTool.trammingSpeed"
+                    required/>
+            <div ng-show="editForm.trammingSpeed.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.trammingSpeed.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.trammingSpeed.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedTrammingSpeed">Tested Tramming Speed(km/hr)</label>
+            <input type="number" class="form-control" name="testedTrammingSpeed" id="field_testedTrammingSpeed"
+                    ng-model="vm.devDrillingTool.testedTrammingSpeed"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_workingHeight">Working Height(mm)</label>
+            <input type="number" class="form-control" name="workingHeight" id="field_workingHeight"
+                    ng-model="vm.devDrillingTool.workingHeight"
+                    required/>
+            <div ng-show="editForm.workingHeight.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.workingHeight.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.workingHeight.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedWorkingHeight">Tested Working Height(mm)</label>
+            <input type="number" class="form-control" name="testedWorkingHeight" id="field_testedWorkingHeight"
+                    ng-model="vm.devDrillingTool.testedWorkingHeight"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_gradeability">Gradeability(Degrees)</label>
+            <input type="number" class="form-control" name="gradeability" id="field_gradeability"
+                    ng-model="vm.devDrillingTool.gradeability"
+                    required/>
+            <div ng-show="editForm.gradeability.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.gradeability.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.gradeability.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedGradeability">Tested Gradeability(Degrees)</label>
+            <input type="number" class="form-control" name="testedGradeability" id="field_testedGradeability"
+                    ng-model="vm.devDrillingTool.testedGradeability"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_numberOfBoom">Number Of Boom</label>
+            <input type="number" class="form-control" name="numberOfBoom" id="field_numberOfBoom"
+                    ng-model="vm.devDrillingTool.numberOfBoom"
+                    required/>
+            <div ng-show="editForm.numberOfBoom.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.numberOfBoom.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.numberOfBoom.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedNumberOfBoom">Tested Number Of Boom</label>
+            <input type="number" class="form-control" name="testedNumberOfBoom" id="field_testedNumberOfBoom"
+                    ng-model="vm.devDrillingTool.testedNumberOfBoom"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_typerOfBoom">Typer Of Boom</label>
+            <input type="text" class="form-control" name="typerOfBoom" id="field_typerOfBoom"
+                    ng-model="vm.devDrillingTool.typerOfBoom"
+                    required/>
+            <div ng-show="editForm.typerOfBoom.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.typerOfBoom.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedTyperOfBoom">Tested Typer Of Boom</label>
+            <input type="text" class="form-control" name="testedTyperOfBoom" id="field_testedTyperOfBoom"
+                    ng-model="vm.devDrillingTool.testedTyperOfBoom"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_outerTurningRadius">Outer Turning Radius(mm)</label>
+            <input type="number" class="form-control" name="outerTurningRadius" id="field_outerTurningRadius"
+                    ng-model="vm.devDrillingTool.outerTurningRadius"
+                    required/>
+            <div ng-show="editForm.outerTurningRadius.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.outerTurningRadius.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.outerTurningRadius.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedOuterTurningRadius">Tested Outer Turning Radius(mm)</label>
+            <input type="number" class="form-control" name="testedOuterTurningRadius" id="field_testedOuterTurningRadius"
+                    ng-model="vm.devDrillingTool.testedOuterTurningRadius"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_innerTurningRadius">Inner Turning Radius(mm)</label>
+            <input type="number" class="form-control" name="innerTurningRadius" id="field_innerTurningRadius"
+                    ng-model="vm.devDrillingTool.innerTurningRadius"
+                    required/>
+            <div ng-show="editForm.innerTurningRadius.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.innerTurningRadius.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.innerTurningRadius.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedInnerTurningRadius">Tested Inner Turning Radius(mm)</label>
+            <input type="number" class="form-control" name="testedInnerTurningRadius" id="field_testedInnerTurningRadius"
+                    ng-model="vm.devDrillingTool.testedInnerTurningRadius"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_observations1">Observations 1</label>
+                <textarea class="form-control" name="observations1" id="field_observations1"
+                    ng-model="vm.devDrillingTool.observations1" required></textarea>
+            <div ng-show="editForm.observations1.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.observations1.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedObservations1">Tested Observations 1</label>
+                <textarea class="form-control" name="testedObservations1" id="field_testedObservations1"
+                    ng-model="vm.devDrillingTool.testedObservations1" ></textarea>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_observations2">Observations 2</label>
+                <textarea class="form-control" name="observations2" id="field_observations2"
+                    ng-model="vm.devDrillingTool.observations2" required></textarea>
+            <div ng-show="editForm.observations2.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.observations2.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedObservations2">Tested Observations 2</label>
+                <textarea class="form-control" name="testedObservations2" id="field_testedObservations2"
+                    ng-model="vm.devDrillingTool.testedObservations2" ></textarea>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_observations3">Observations 3</label>
+                <textarea class="form-control" name="observations3" id="field_observations3"
+                    ng-model="vm.devDrillingTool.observations3" ></textarea>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedObservations3">Tested Observations 3</label>
+                <textarea class="form-control" name="testedObservations3" id="field_testedObservations3"
+                    ng-model="vm.devDrillingTool.testedObservations3" ></textarea>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_observations4">Observations 4</label>
+                <textarea class="form-control" name="observations4" id="field_observations4"
+                    ng-model="vm.devDrillingTool.observations4" required></textarea>
+            <div ng-show="editForm.observations4.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.observations4.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedObservations4">Tested Observations 4</label>
+                <textarea class="form-control" name="testedObservations4" id="field_testedObservations4"
+                    ng-model="vm.devDrillingTool.testedObservations4" ></textarea>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_observations5">Observations 5</label>
+                <textarea class="form-control" name="observations5" id="field_observations5"
+                    ng-model="vm.devDrillingTool.observations5" required></textarea>
+            <div ng-show="editForm.observations5.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.observations5.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedObservations5">Tested Observations 5</label>
+                <textarea class="form-control" name="testedObservations5" id="field_testedObservations5"
+                    ng-model="vm.devDrillingTool.testedObservations5" ></textarea>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_observations6">Observations 6</label>
+                <textarea class="form-control" name="observations6" id="field_observations6"
+                    ng-model="vm.devDrillingTool.observations6" required></textarea>
+            <div ng-show="editForm.observations6.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.observations6.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedObservations6">Tested Observations 6</label>
+                <textarea class="form-control" name="testedObservations6" id="field_testedObservations6"
+                    ng-model="vm.devDrillingTool.testedObservations6" ></textarea>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_operators_Comments">Operators Comments</label>
+                <textarea class="form-control" name="operators_Comments" id="field_operators_Comments"
+                    ng-model="vm.devDrillingTool.operators_Comments" required></textarea>
+            <div ng-show="editForm.operators_Comments.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.operators_Comments.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedOperators_Comments">Tested Operators Comments</label>
+                <textarea class="form-control" name="testedOperators_Comments" id="field_testedOperators_Comments"
+                    ng-model="vm.devDrillingTool.testedOperators_Comments" ></textarea>
+        </div>
+
+        <div class="form-group col-xs-6 hide-content">
+            <label for="field_oemName">Oem Name</label>
+            <select class="form-control" id="field_oemName" name="oemName" ng-model="vm.devDrillingTool.oemName" ng-options="company as company.name for company in vm.companies track by company.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group col-xs-6 hide-content">
+            <label for="field_addedBy">Added By</label>
+            <select class="form-control" id="field_addedBy" name="addedBy" ng-model="vm.devDrillingTool.addedBy" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

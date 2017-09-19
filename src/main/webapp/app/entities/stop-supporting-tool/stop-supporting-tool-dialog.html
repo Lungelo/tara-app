@@ -1,0 +1,654 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myStopSupportingToolLabel">Add or edit TooL</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.stopSupportingTool.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.stopSupportingTool.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.stopSupportingTool.name"
+                    required ng-minlength="3"/>
+            <div ng-show="editForm.name.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.name.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.name.$error.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_model">Model</label>
+            <input type="text" class="form-control" name="model" id="field_model"
+                    ng-model="vm.stopSupportingTool.model"
+                    required ng-minlength="3"/>
+            <div ng-show="editForm.model.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.model.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.model.$error.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_technologyType">Technology Type</label>
+            <input type="text" class="form-control" name="technologyType" id="field_technologyType"
+                    ng-model="vm.stopSupportingTool.technologyType"
+                    required ng-minlength="3"/>
+            <div ng-show="editForm.technologyType.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.technologyType.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.technologyType.$error.minlength" translate-value-min="3">
+                    This field is required to be at least 3 characters.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_trl">TRL</label>
+            <input type="number" class="form-control" name="trl" id="field_trl"
+                    ng-model="vm.stopSupportingTool.trl"
+                    required min="1" max="9"/>
+            <div ng-show="editForm.trl.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.trl.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.trl.$error.min" translate-value-min="1">
+                    This field should be at least 1.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.trl.$error.max">
+                    This field cannot be more than 9.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.trl.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setPhoto($file, vm.stopSupportingTool)" ngf-pattern="'image/*'">
+            <label class="control-label" for="field_photo">Photo</label>
+            <div>
+                <img data-ng-src="{{'data:' + vm.stopSupportingTool.photoContentType + ';base64,' + vm.stopSupportingTool.photo}}" style="max-height: 100px;" ng-if="vm.stopSupportingTool.photo" alt="stopSupportingTool image"/>
+                <div ng-if="vm.stopSupportingTool.photo" class="help-block clearfix">
+                    <span class="pull-left">{{vm.stopSupportingTool.photoContentType}}, {{vm.byteSize(vm.stopSupportingTool.photo)}}</span>
+                    <button type="button" ng-click="vm.stopSupportingTool.photo=null;vm.stopSupportingTool.photoContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setPhoto($file, vm.stopSupportingTool)" accept="image/*">
+                    <i class="glyphicon glyphicon-open"></i>  Browse
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="photo" id="field_photo"
+                    ng-model="vm.stopSupportingTool.photo"
+                    />
+            <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
+                    ng-model="vm.stopSupportingTool.photoContentType" />
+        </div>
+        <div class="form-group" ngf-drop ngf-change="vm.setDatasheet($file, vm.stopSupportingTool)">
+            <label class="control-label" for="field_datasheet">Datasheet</label>
+            <div>
+                <div ng-if="vm.stopSupportingTool.datasheet" class="help-block clearfix">
+                    <a class="pull-left" ng-click="vm.openFile(vm.stopSupportingTool.datasheetContentType, vm.stopSupportingTool.datasheet)">open</a><br>
+                    <span class="pull-left">{{vm.stopSupportingTool.datasheetContentType}}, {{vm.byteSize(vm.stopSupportingTool.datasheet)}}</span>
+                    <button type="button" ng-click="vm.stopSupportingTool.datasheet=null;vm.stopSupportingTool.datasheetContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+                <button type="button" ngf-select class="btn btn-default btn-block"
+                        ngf-change="vm.setDatasheet($file, vm.stopSupportingTool)">
+                    <i class="glyphicon glyphicon-open"></i>  Browse
+                </button>
+            </div>
+            <input type="hidden" class="form-control" name="datasheet" id="field_datasheet"
+                    ng-model="vm.stopSupportingTool.datasheet"
+                    />
+            <input type="hidden" class="form-control" name="datasheetContentType" id="field_datasheetContentType"
+                    ng-model="vm.stopSupportingTool.datasheetContentType" />
+        </div>
+        
+        
+         </br>
+		
+		<div class="form-group col-xs-6">
+            <label style="padding: 6px 12px;
+    text-transform: uppercase;
+    border: 1px solid #003667;
+    color: #003667;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 0;
+    background-color: transparent;" >Specification</label>
+            
+        </div>
+        <div class="form-group col-xs-6">
+            <label style="padding: 6px 12px;
+    text-transform: uppercase;
+    border: 1px solid #003667;
+    color: #003667;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 0;
+    background-color: transparent;" >Test Results</label>
+            
+        </div>
+		<hr></hr>
+        
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_typeOfMachine">Type Of Machine</label>
+            <input type="text" class="form-control" name="typeOfMachine" id="field_typeOfMachine"
+                    ng-model="vm.stopSupportingTool.typeOfMachine"
+                    required/>
+            <div ng-show="editForm.typeOfMachine.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.typeOfMachine.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedTypeOfMachine">Tested Type Of Machine</label>
+            <input type="text" class="form-control" name="testedTypeOfMachine" id="field_testedTypeOfMachine"
+                    ng-model="vm.stopSupportingTool.testedTypeOfMachine"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_weight">Weight(kg)</label>
+            <input type="number" class="form-control" name="weight" id="field_weight"
+                    ng-model="vm.stopSupportingTool.weight"
+                    required/>
+            <div ng-show="editForm.weight.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.weight.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.weight.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedWeight">Tested Weight(kg)</label>
+            <input type="number" class="form-control" name="testedWeight" id="field_testedWeight"
+                    ng-model="vm.stopSupportingTool.testedWeight"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_length">Length(mm)</label>
+            <input type="number" class="form-control" name="length" id="field_length"
+                    ng-model="vm.stopSupportingTool.length"
+                    required/>
+            <div ng-show="editForm.length.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.length.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.length.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedLength">Tested Length(mm)</label>
+            <input type="number" class="form-control" name="testedLength" id="field_testedLength"
+                    ng-model="vm.stopSupportingTool.testedLength"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_width">Width(mm)</label>
+            <input type="number" class="form-control" name="width" id="field_width"
+                    ng-model="vm.stopSupportingTool.width"
+                    required/>
+            <div ng-show="editForm.width.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.width.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.width.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedWidth">Tested Width(mm)</label>
+            <input type="number" class="form-control" name="testedWidth" id="field_testedWidth"
+                    ng-model="vm.stopSupportingTool.testedWidth"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_holeSize">Hole Size(mm)</label>
+            <input type="number" class="form-control" name="holeSize" id="field_holeSize"
+                    ng-model="vm.stopSupportingTool.holeSize"
+                    required/>
+            <div ng-show="editForm.holeSize.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.holeSize.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.holeSize.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedHoleSize">Tested Hole Size(mm)</label>
+            <input type="number" class="form-control" name="testedHoleSize" id="field_testedHoleSize"
+                    ng-model="vm.stopSupportingTool.testedHoleSize"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_drillWaterConsumption">Drill Water Consumption(l/s)</label>
+            <input type="number" class="form-control" name="drillWaterConsumption" id="field_drillWaterConsumption"
+                    ng-model="vm.stopSupportingTool.drillWaterConsumption"
+                    required/>
+            <div ng-show="editForm.drillWaterConsumption.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.drillWaterConsumption.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.drillWaterConsumption.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedDrillWaterConsumption">Tested Drill Water Consumption(l/s)</label>
+            <input type="number" class="form-control" name="testedDrillWaterConsumption" id="field_testedDrillWaterConsumption"
+                    ng-model="vm.stopSupportingTool.testedDrillWaterConsumption"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_cycleTimeBolting">Cycle Time Bolting(sec)</label>
+            <input type="number" class="form-control" name="cycleTimeBolting" id="field_cycleTimeBolting"
+                    ng-model="vm.stopSupportingTool.cycleTimeBolting"
+                    required/>
+            <div ng-show="editForm.cycleTimeBolting.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.cycleTimeBolting.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.cycleTimeBolting.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedCycleTimeBolting">Tested Cycle Time Bolting(sec)</label>
+            <input type="number" class="form-control" name="testedCycleTimeBolting" id="field_testedCycleTimeBolting"
+                    ng-model="vm.stopSupportingTool.testedCycleTimeBolting"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_waterConsumptionPerMetreDrilled">Water Consumption Per Metre Drilled(l/m)</label>
+            <input type="number" class="form-control" name="waterConsumptionPerMetreDrilled" id="field_waterConsumptionPerMetreDrilled"
+                    ng-model="vm.stopSupportingTool.waterConsumptionPerMetreDrilled"
+                    required/>
+            <div ng-show="editForm.waterConsumptionPerMetreDrilled.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.waterConsumptionPerMetreDrilled.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.waterConsumptionPerMetreDrilled.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedWaterConsumptionPerMetreDrilled">Tested Water Consumption Per Metre Drilled(l/m)</label>
+            <input type="number" class="form-control" name="testedWaterConsumptionPerMetreDrilled" id="field_testedWaterConsumptionPerMetreDrilled"
+                    ng-model="vm.stopSupportingTool.testedWaterConsumptionPerMetreDrilled"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_powerSource">Power Source</label>
+            <input type="text" class="form-control" name="powerSource" id="field_powerSource"
+                    ng-model="vm.stopSupportingTool.powerSource"
+                    required/>
+            <div ng-show="editForm.powerSource.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.powerSource.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedPowerSource">Tested Power Source</label>
+            <input type="text" class="form-control" name="testedPowerSource" id="field_testedPowerSource"
+                    ng-model="vm.stopSupportingTool.testedPowerSource"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_trammingSpeed">Tramming Speed(Sec – min)</label>
+            <input type="number" class="form-control" name="trammingSpeed" id="field_trammingSpeed"
+                    ng-model="vm.stopSupportingTool.trammingSpeed"
+                    required/>
+            <div ng-show="editForm.trammingSpeed.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.trammingSpeed.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.trammingSpeed.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedTrammingSpeed">Tested Tramming Speed(Sec – min)</label>
+            <input type="number" class="form-control" name="testedTrammingSpeed" id="field_testedTrammingSpeed"
+                    ng-model="vm.stopSupportingTool.testedTrammingSpeed"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_boltLengthRange">Bolt Length Range(mm)</label>
+            <input type="text" class="form-control" name="boltLengthRange" id="field_boltLengthRange"
+                    ng-model="vm.stopSupportingTool.boltLengthRange"
+                    required/>
+            <div ng-show="editForm.boltLengthRange.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.boltLengthRange.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedBoltLengthRange">Tested Bolt Length Range(mm)</label>
+            <input type="text" class="form-control" name="testedBoltLengthRange" id="field_testedBoltLengthRange"
+                    ng-model="vm.stopSupportingTool.testedBoltLengthRange"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_drillSpeed">Drill Speed(Sec  or min)</label>
+            <input type="number" class="form-control" name="drillSpeed" id="field_drillSpeed"
+                    ng-model="vm.stopSupportingTool.drillSpeed"
+                    required/>
+            <div ng-show="editForm.drillSpeed.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.drillSpeed.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.drillSpeed.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedDrillSpeed">Tested Drill Speed(Sec  or min)</label>
+            <input type="number" class="form-control" name="testedDrillSpeed" id="field_testedDrillSpeed"
+                    ng-model="vm.stopSupportingTool.testedDrillSpeed"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_gradeability">Gradeability(Degrees)</label>
+            <input type="number" class="form-control" name="gradeability" id="field_gradeability"
+                    ng-model="vm.stopSupportingTool.gradeability"
+                    required/>
+            <div ng-show="editForm.gradeability.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.gradeability.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.gradeability.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedGradeability">Tested Gradeability(Degrees)</label>
+            <input type="number" class="form-control" name="testedGradeability" id="field_testedGradeability"
+                    ng-model="vm.stopSupportingTool.testedGradeability"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_numberOfBooms">Number Of Booms</label>
+            <input type="number" class="form-control" name="numberOfBooms" id="field_numberOfBooms"
+                    ng-model="vm.stopSupportingTool.numberOfBooms"
+                    required/>
+            <div ng-show="editForm.numberOfBooms.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.numberOfBooms.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.numberOfBooms.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedNumberOfBooms">Tested Number Of Booms</label>
+            <input type="number" class="form-control" name="testedNumberOfBooms" id="field_testedNumberOfBooms"
+                    ng-model="vm.stopSupportingTool.testedNumberOfBooms"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_typeOfBoom">Type Of Boom</label>
+            <input type="text" class="form-control" name="typeOfBoom" id="field_typeOfBoom"
+                    ng-model="vm.stopSupportingTool.typeOfBoom"
+                    required/>
+            <div ng-show="editForm.typeOfBoom.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.typeOfBoom.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedTypeOfBoom">Tested Type Of Boom</label>
+            <input type="text" class="form-control" name="testedTypeOfBoom" id="field_testedTypeOfBoom"
+                    ng-model="vm.stopSupportingTool.testedTypeOfBoom"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_outerTurningRadius">Outer Turning Radius(mm)</label>
+            <input type="number" class="form-control" name="outerTurningRadius" id="field_outerTurningRadius"
+                    ng-model="vm.stopSupportingTool.outerTurningRadius"
+                    required/>
+            <div ng-show="editForm.outerTurningRadius.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.outerTurningRadius.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.outerTurningRadius.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedOuterTurningRadius">Tested Outer Turning Radius(mm)</label>
+            <input type="number" class="form-control" name="testedOuterTurningRadius" id="field_testedOuterTurningRadius"
+                    ng-model="vm.stopSupportingTool.testedOuterTurningRadius"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_innerTurningRadius">Inner Turning Radius(mm)</label>
+            <input type="number" class="form-control" name="innerTurningRadius" id="field_innerTurningRadius"
+                    ng-model="vm.stopSupportingTool.innerTurningRadius"
+                    required/>
+            <div ng-show="editForm.innerTurningRadius.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.innerTurningRadius.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.innerTurningRadius.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedInnerTurningRadius">Tested Inner Turning Radius(mm)</label>
+            <input type="number" class="form-control" name="testedInnerTurningRadius" id="field_testedInnerTurningRadius"
+                    ng-model="vm.stopSupportingTool.testedInnerTurningRadius"
+                    />
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_observations1">Observations 1</label>
+                <textarea class="form-control" name="observations1" id="field_observations1"
+                    ng-model="vm.stopSupportingTool.observations1" required></textarea>
+            <div ng-show="editForm.observations1.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.observations1.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedObservations1">Tested Observations 1</label>
+                <textarea class="form-control" name="testedObservations1" id="field_testedObservations1"
+                    ng-model="vm.stopSupportingTool.testedObservations1" ></textarea>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_observations2">Observations 2</label>
+                <textarea class="form-control" name="observations2" id="field_observations2"
+                    ng-model="vm.stopSupportingTool.observations2" required></textarea>
+            <div ng-show="editForm.observations2.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.observations2.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedObservations2">Tested Observations 2</label>
+                <textarea class="form-control" name="testedObservations2" id="field_testedObservations2"
+                    ng-model="vm.stopSupportingTool.testedObservations2" ></textarea>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_observations3">Observations 3</label>
+                <textarea class="form-control" name="observations3" id="field_observations3"
+                    ng-model="vm.stopSupportingTool.observations3" required></textarea>
+            <div ng-show="editForm.observations3.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.observations3.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedObservations3">Tested Observations 3</label>
+                <textarea class="form-control" name="testedObservations3" id="field_testedObservations3"
+                    ng-model="vm.stopSupportingTool.testedObservations3" ></textarea>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_observations4">Observations 4</label>
+                <textarea class="form-control" name="observations4" id="field_observations4"
+                    ng-model="vm.stopSupportingTool.observations4" required></textarea>
+            <div ng-show="editForm.observations4.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.observations4.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedObservations4">Tested Observations 4</label>
+                <textarea class="form-control" name="testedObservations4" id="field_testedObservations4"
+                    ng-model="vm.stopSupportingTool.testedObservations4" ></textarea>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_observations5">Observations 5</label>
+                <textarea class="form-control" name="observations5" id="field_observations5"
+                    ng-model="vm.stopSupportingTool.observations5" required></textarea>
+            <div ng-show="editForm.observations5.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.observations5.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedObservations5">Tested Observations 5</label>
+                <textarea class="form-control" name="testedObservations5" id="field_testedObservations5"
+                    ng-model="vm.stopSupportingTool.testedObservations5" ></textarea>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_observations6">Observations 6</label>
+                <textarea class="form-control" name="observations6" id="field_observations6"
+                    ng-model="vm.stopSupportingTool.observations6" required></textarea>
+            <div ng-show="editForm.observations6.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.observations6.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedObservations6">Tested Observations 6</label>
+                <textarea class="form-control" name="testedObservations6" id="field_testedObservations6"
+                    ng-model="vm.stopSupportingTool.testedObservations6" ></textarea>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_operators_Comments">Operators Comments</label>
+                <textarea class="form-control" name="operators_Comments" id="field_operators_Comments"
+                    ng-model="vm.stopSupportingTool.operators_Comments" required></textarea>
+            <div ng-show="editForm.operators_Comments.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.operators_Comments.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            <label class="control-label" for="field_testedOperators_Comments">Tested Operators Comments</label>
+                <textarea class="form-control" name="testedOperators_Comments" id="field_testedOperators_Comments"
+                    ng-model="vm.stopSupportingTool.testedOperators_Comments" ></textarea>
+        </div>
+
+        <div class="form-group col-xs-6 hide-content">
+            <label for="field_oemName">Oem Name</label>
+            <select class="form-control" id="field_oemName" name="oemName" ng-model="vm.stopSupportingTool.oemName" ng-options="company as company.name for company in vm.companies track by company.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group col-xs-6 hide-content">
+            <label for="field_addedBy">Added By</label>
+            <select class="form-control" id="field_addedBy" name="addedBy" ng-model="vm.stopSupportingTool.addedBy" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
